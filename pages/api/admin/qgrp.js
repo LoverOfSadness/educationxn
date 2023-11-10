@@ -18,11 +18,13 @@ import dbConnect from "@/lib/dbConnect";
 
             res.status(200).json(rtxx);
 
-        }  else  if (req.query.name && req.query.delete) {
+        }  else  if (req.query.delete) {
 
 
-            await QuizDB.deleteMany({group: req.query.name})
-            await QgrpDB.deleteOne({name: req.query.name})
+            await QuizDB.deleteMany({group: req.query.delete})
+            await QgrpDB.deleteOne({name: req.query.delete})
+
+            res.status(200).json("done");
 
 
         }else if (req.query.name){

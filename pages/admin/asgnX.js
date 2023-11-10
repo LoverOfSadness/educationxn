@@ -130,7 +130,7 @@ export default ()=>{
                             <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Student Name</th>
                             <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Student Email</th>
                             <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Marks Obtaied</th>
-                            <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Grade</th>
+                            {/*<th className="text-white" style= {{backgroundColor:"#e4b845"}}>Grade</th>*/}
                             <th  className="text-white" style= {{backgroundColor:"#e4b845"}}>Action</th>
                         </tr>
                         </thead>
@@ -143,33 +143,33 @@ export default ()=>{
                                     <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.name}</td>
                                     <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.email}</td>
                                     <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.phone}</td>
-                                    <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.grade}</td>
+                                    {/*<td className="text-white" style= {{backgroundColor:"#013571"}}>{value.grade}</td>*/}
                                     <td  className="text-white" style= {{backgroundColor:"#013571"}}>
                                         <div className="btn-group d-flex justify-content-around">
-                                            <div className="btn btn-danger" onClick={(r)=>{
+                                            {/*<div className="btn btn-danger" onClick={(r)=>{*/}
 
-                                                let t=prompt("What's the Grade");
+                                            {/*    let t=prompt("What's the Grade");*/}
 
-                                                if (t) {
-                                                    toast.promise(axios.post("/api/assr", {
+                                            {/*    if (t) {*/}
+                                            {/*        toast.promise(axios.post("/api/assr", {*/}
 
-                                                        idx: value._id,
-                                                        grade: t// Assuming getfile is defined elsewhere
-                                                    }),{
-                                                            loading: 'Loading...',
-                                                            success: <b>Grade is Set</b>,
-                                                            error: <b>Could not Set.</b>,
+                                            {/*            idx: value._id,*/}
+                                            {/*            grade: t// Assuming getfile is defined elsewhere*/}
+                                            {/*        }),{*/}
+                                            {/*                loading: 'Loading...',*/}
+                                            {/*                success: <b>Grade is Set</b>,*/}
+                                            {/*                error: <b>Could not Set.</b>,*/}
 
-                                                        }
+                                            {/*            }*/}
 
-                                                    ).then(()=>{
-
-
-                                                    })
-                                                }
+                                            {/*        ).then(()=>{*/}
 
 
-                                            }}> Mark</div>
+                                            {/*        })*/}
+                                            {/*    }*/}
+
+
+                                            {/*}}> Mark</div>*/}
                                             <div className="btn btn-success" onClick={()=> {
 
                                                 const newTab = window.open(("/admin/asgnXview?id="+value._id), '_blank');

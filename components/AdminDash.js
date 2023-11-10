@@ -56,7 +56,7 @@ export default () => {
                 <p className="px-2">
 
                     <FaAngleRight className="text-white"/><a className="text-white"
-                                                                             href={""}>Manage Test</a>
+                                                                             href={"/admin/Mqs"}>Manage Test</a>
                 </p>
                 {/*<p className="px-2"><FaAngleRight className="text-white" /> <a className="text-white" href={"faq"}>FAQ</a> </p>*/}
 

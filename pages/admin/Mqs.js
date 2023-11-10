@@ -4,6 +4,7 @@ import {useEffect, useRef, useState} from "react";
 import dynamic from "next/dynamic";
 import {Modal} from "react-bootstrap";
 import Aquiz from "@/pages/admin/Aquiz";
+import AdminDash from "@/components/AdminDash";
 
 export default ()=>{
 
@@ -12,6 +13,10 @@ export default ()=>{
     const [tar, star] = useState("");
 
     const  [getxdat,setxdat]=useState([])
+
+    const  [getusr,setusrgrp]=useState([])
+
+
     const  [getudat,setudat]=useState([])
 
     const  [getclick,setclick]=useState([])
@@ -22,6 +27,9 @@ export default ()=>{
     const udata=useRef([])
 
     function loaddata() {
+
+
+
         axios.get("/api/admin/qgrp").then(value => {
 
 
@@ -30,6 +38,18 @@ export default ()=>{
 
 
         })
+
+        axios.get("/api/admin/grp").then(value => {
+
+
+
+            setusrgrp(value.data);
+
+
+        })
+
+
+
 
     }
     function loaddataU(s) {
@@ -77,7 +97,11 @@ export default ()=>{
 
         </Modal>
 
+
         <div className="d-flex">
+
+            <AdminDash/>
+
 
             <div className="container">
 
@@ -108,7 +132,37 @@ export default ()=>{
 setIsOpen(true)
 
                         }}>Add Question</div>
-                        <div className="btn btn-danger me-3">Delete</div>
+                        <div className="btn btn-danger me-3" onClick={(o)=>{
+
+                            Swal.fire({
+                                title: 'Delete',
+
+                                html:"Do you want to delete this Question set",
+
+                                showCancelButton: true,
+                                confirmButtonText: 'Delete',
+                                showLoaderOnConfirm: true,
+                                preConfirm: (s) => {
+
+
+                                    axios.get("/api/admin/qgrp?delete=" + tar).then(res => {
+
+
+                                        Swal.fire("Success", "Group Created Successfully", "success").then(r => {
+
+                                            loaddata()
+
+
+                                        })
+
+
+                                    })
+
+                                }
+
+                            }).then(r =>{})
+
+                        }}>Delete</div>
                         <div className="btn btn-primary" onClick={(o)=>{
                             Swal.fire({
                                 title: 'Group Name',
@@ -117,16 +171,15 @@ setIsOpen(true)
                                     autocapitalize: 'off'
                                 },
                                 showCancelButton: true,
-                                confirmButtonText: 'Look up',
+                                confirmButtonText: 'Create',
                                 showLoaderOnConfirm: true,
                                 preConfirm: (s) => {
 
 
+                                    axios.post("/api/admin/qgrp?name=" + s).then(res => {
 
-                                    axios.post("/api/admin/qgrp?name="+s).then(res=>{
 
-
-                                        Swal.fire("Success","Group Created Successfully","success").then(r=>{
+                                        Swal.fire("Success", "Group Created Successfully", "success").then(r => {
 
                                             loaddata()
 
@@ -134,14 +187,17 @@ setIsOpen(true)
                                         })
 
 
-
                                     })
 
                                 }
 
-                            })
+                            }).then(r =>{})
 
-                        }}> Create</div>
+                        }
+
+                        }
+
+                        > Create</div>
                     </div>
                     </div>
 
@@ -169,9 +225,9 @@ setIsOpen(true)
 
                                 return <tr className="bg-danger">
 
-                                    <td className="text-white d-flex justify-content-between" style= {{backgroundColor:"#013571"}}>
+                                    <td className="text-white d-flex justify-content-between align-items-center" style= {{backgroundColor:"#013571"}}>
 
-                                        <div><div dangerouslySetInnerHTML={{__html:value.q}}></div></div>
+                                        <div><div dangerouslySetInnerHTML={{__html:value.q}} className="text-truncate"></div></div>
 
 
                                         <div>
@@ -179,15 +235,15 @@ setIsOpen(true)
                                         <input type={"button"} onChange={event =>
                                         {
 
-                                            if( udata.current.indexOf(value._id) !==-1)
-                                            {
-                                                udata.current= udata.current.filter(item => item !== value._id);
-
-                                            } else {
-
-                                                udata.current.push(value._id)
-
-                                            }
+                                            // if( udata.current.indexOf(value._id) !==-1)
+                                            // {
+                                            //     udata.current= udata.current.filter(item => item !== value._id);
+                                            //
+                                            // } else {
+                                            //
+                                            //     udata.current.push(value._id)
+                                            //
+                                            // }
                                         }} className="btn btn-danger" value="delete" />
 
  <input type={"button"} onChange={event =>
@@ -227,8 +283,8 @@ setIsOpen(true)
                             cdata.current=e.target.value
                         }}>
 
-                            <option value="" >Select a group Name</option>
-                            {getxdat.map(valu => {
+                            <option value="" >Select a Student Group</option>
+                            {getusr.map(valu => {
                                 return <option key={valu._id} value={valu.name}>{valu.name}</option>
                             })
 
