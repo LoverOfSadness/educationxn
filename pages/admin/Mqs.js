@@ -232,33 +232,39 @@ setIsOpen(true)
 
                                         <div>
 
-                                        <input type={"button"} onChange={event =>
+                                        <input type={"button"} onClick={et =>
                                         {
 
-                                            // if( udata.current.indexOf(value._id) !==-1)
-                                            // {
-                                            //     udata.current= udata.current.filter(item => item !== value._id);
-                                            //
-                                            // } else {
-                                            //
-                                            //     udata.current.push(value._id)
-                                            //
-                                            // }
+                                            axios.delete("/api/admin/aquiz?id=" + value._id).then(res => {
+
+
+                                                Swal.fire("Success", "Group Created Successfully", "success").then(r => {
+
+                                                    loaddata()
+
+
+                                                })
+
+
+                                            })
+
+
+
                                         }} className="btn btn-danger" value="delete" />
 
- <input type={"button"} onChange={event =>
-                                        {
+ {/*<input type={"button"} onChange={event =>*/}
+ {/*                                       {*/}
 
-                                            if( udata.current.indexOf(value._id) !==-1)
-                                            {
-                                                udata.current= udata.current.filter(item => item !== value._id);
+ {/*                                           if( udata.current.indexOf(value._id) !==-1)*/}
+ {/*                                           {*/}
+ {/*                                               udata.current= udata.current.filter(item => item !== value._id);*/}
 
-                                            } else {
+ {/*                                           } else {*/}
 
-                                                udata.current.push(value._id)
+ {/*                                               udata.current.push(value._id)*/}
 
-                                            }
-                                        }} className="btn btn-primary mx-2" value="view" />
+ {/*                                           }*/}
+ {/*                                       }} className="btn btn-primary mx-2" value="view" />*/}
 
 
                                         </div>
@@ -296,9 +302,9 @@ setIsOpen(true)
 
 
 
-                            if (udata.current.length<1) {
+                            if (cdata.current=="") {
 
-                                Swal.fire("Error","please select atleast one student","error")
+                                Swal.fire("Error","please select atleast one student group","error")
 
                                 return
                             }
@@ -317,11 +323,6 @@ setIsOpen(true)
                                 preConfirm: async (s) => {
 
 
-
-
-
-
-
                                     // return  new Promise((r,v)=>{
                                     //
                                     //    setTimeout(()=>{
@@ -333,19 +334,32 @@ setIsOpen(true)
                                     //
                                     // })
 
-                                    return  axios.post("/api/admin/grp",{grp:cdata.current,user:getclick}).then(res=>{
+                                    if (tar) {
 
 
-                                        Swal.fire("Success","Group Created Successfully","success").then(r=>{
+                                    axios.post("/api/admin/grp", {grp: cdata.current, q: tar}).then(res => {
 
-                                            loaddata()
+
+                                        Swal.fire("Success", "Assign to Students Group Successfully", "success").then(r => {
+
+                                            // loaddata()
 
 
                                         })
 
 
-
                                     })
+                                }else {
+
+                                        Swal.fire("Error", "Select a Question group First", "error").then(r => {
+
+                                            // loaddata()
+
+
+                                        })
+
+
+                                    }
 
                                 }
 

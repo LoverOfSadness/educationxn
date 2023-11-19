@@ -26,7 +26,7 @@ export default async function handler(req, res) {
 
                 const user = await Users.create({
                     email: req.body.email,
-                    password: req.body.password,
+                    password: "1234567890",
                     name: req.body.name,
                     sex: req.body.sex,
                     age: req.body.age,

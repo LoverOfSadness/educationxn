@@ -60,7 +60,7 @@ export default function Home() {
         <CarouselRow2/>
 
         <Slider/>
-        <Clienntsay/>
+        {/*<Clienntsay/>*/}
 
 
         <Futter/>

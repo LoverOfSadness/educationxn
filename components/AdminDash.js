@@ -47,11 +47,11 @@ export default () => {
                     Notification </a></p>
                 <p className="px-2">
                     <FaAngleRight className="text-white"/><a className="text-white"
-                                                                             href={"/admin/stdX"}> Contact Support</a>
+                                                                             href={"/admin/stdX"}> Manage User</a>
                 </p>
                 <p className="px-2">
                     <FaAngleRight className="text-white"/><a className="text-white"
-                                                                             href={""}>Manage Meeting</a>
+                                                                             href={"/admin/meet"}>Manage Meeting</a>
                 </p>
                 <p className="px-2">
 

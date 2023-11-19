@@ -29,16 +29,17 @@ const Slider = () => {
             <div className="row justify-content-center ">
             <div className="w-75 d-flex justify-content-center">
 
+                <div>
             <Swiper className="mb-5 d-block "
 
-                    autoplay={{
-                        delay: 500,
-                        disableOnInteraction: false,
-                    }}
-                spaceBetween={0}
-                slidesPerView={3}
-                onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}
+                //     autoplay={{
+                //         delay: 500,
+                //         disableOnInteraction: false,
+                //     }}
+                // spaceBetween={0}
+                // slidesPerView={3}
+                // onSlideChange={() => console.log('slide change')}
+                // onSwiper={(swiper) => console.log(swiper)}
             >
 
                 <SwiperSlide className="">
@@ -61,6 +62,7 @@ const Slider = () => {
 
 
             </Swiper>
+                </div>
 
             </div>
             </div>
@@ -87,4 +89,4 @@ const Slider = () => {
 };
 
 export default Slider;
-``
+

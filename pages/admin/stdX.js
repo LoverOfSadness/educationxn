@@ -2,24 +2,32 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import {useEffect, useRef, useState} from "react";
 import dynamic from "next/dynamic";
+import {Modal} from "react-bootstrap";
+import AdminDash from "@/components/AdminDash";
 
 export default ()=>{
 
     const  [getxdat,setxdat]=useState([])
     const  [getudat,setudat]=useState([])
 
-    const  [getclick,setclick]=useState([])
+    // const  [getclick,setclick]=useState([])
+
+    const [isOpen, setIsOpen] = useState(false);
 
 
 
     const cdata=useRef("")
+    const txc=useRef(null)
     const udata=useRef([])
+
+    const clickx=useRef([])
 
     function loaddata() {
         axios.get("/api/admin/grp").then(value => {
 
 
 
+            clickx.current=[]
             setxdat(value.data);
 
 
@@ -31,6 +39,7 @@ export default ()=>{
 
 
 
+            udata.current=[]
             setudat(value.data);
 
 
@@ -53,8 +62,54 @@ export default ()=>{
     return <>
 
 
+
+        <Modal show={isOpen} onHide={i=>{setIsOpen(false)}} fullscreen={true} >
+            <Modal.Header>
+                <div className="text-center w-100 h4 ">User Details</div>
+                <button onClick={i=>{setIsOpen(false)}} className="bg-transparent border-0 h1 m-0">&times;</button>
+            </Modal.Header>
+            <Modal.Body>
+
+                <div className="container-fluid bg-white">
+
+                    <div className="d-flex justify-content-center text-white" style={{marginLeft:"20%"}}>
+
+                        <div className="text-center w-100"><div className="w-75">
+                            <img src="/img/ellipse_3.png" alt="Image" className="img-fluid" /></div>
+                            <div className="py-2 px-5 rounded mt-2 w-75 mt-3" style={{backgroundColor:"#cbcbcb"}}>{txc.current?.name}</div>
+                            <div className="w-75 d-flex">
+                                <div className="py-2 px-5 rounded  mt-2 w-50  mt-3 me-1" style={{backgroundColor:"#cbcbcb"}}>{txc.current?.age}</div>
+                                <div className="py-2 px-5 rounded  mt-2 w-50 mt-3 ms-1" style={{backgroundColor:"#cbcbcb"}}>{txc.current?.sex}</div>
+                            </div>
+                            <div className="w-75 d-flex">
+                                <div className="py-2 px-5 rounded  mt-2 w-50 me-1 mt-3" style={{backgroundColor:"#cbcbcb"}}>{txc.current?.phone}</div>
+                                <div className="py-2 px-5 rounded  mt-2 w-50 mt-3 ms-1" style={{backgroundColor:"#cbcbcb"}}>{txc.current?.email}</div>
+                            </div>
+                            <div className="py-2 px-5 rounded  mt-2 w-75 mt-3" style={{backgroundColor:"#cbcbcb"}}>{txc.current?.addr}</div>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+
+            </Modal.Body>
+
+        </Modal>
+
+
+
+
+
+
 <div className="d-flex">
 
+    <AdminDash/>
 <div className="container">
 
 
@@ -67,6 +122,7 @@ export default ()=>{
 
 
 
+loaddataU(event.target.value)
 
 
         }}>
@@ -79,7 +135,6 @@ export default ()=>{
             }
 
         </select><div className="d-flex">
-        <div className="btn btn-danger me-3">Delete</div>
         <div className="btn btn-primary" onClick={(o)=>{
             Swal.fire({
                 title: 'Group Name',
@@ -144,9 +199,16 @@ export default ()=>{
                         <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.name}</td>
                         <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.email}</td>
                         <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.phone}</td>
-                        <td  className="text-white" style= {{backgroundColor:"#013571"}}>
+                        <td  className="text-white " style= {{backgroundColor:"#013571"}}>
 
 
+                            <div className="d-flex justify-content-center">
+
+                                <div className="mx-3 text-white" onClick={t=>{
+
+                                    txc.current=value
+                                    setIsOpen(true)
+                                }}>View</div>
                                 <input type={"checkbox"} onChange={event =>
                                 {
 
@@ -159,7 +221,7 @@ export default ()=>{
                                        udata.current.push(value._id)
 
                                    }
-                                }} />
+                                }} /> </div>
 
 
 
@@ -204,6 +266,13 @@ export default ()=>{
                     return
                 }
 
+                if (cdata.current=="") {
+
+                    Swal.fire("Error","please select a group","error")
+
+                    return
+                }
+
 
                 Swal.fire({
                     title: 'Assign Group'+cdata.current,
@@ -234,12 +303,12 @@ export default ()=>{
                        //
                        // })
 
-                       return  axios.post("/api/admin/grp",{grp:cdata.current,user:getclick}).then(res=>{
+                       return  axios.post("/api/admin/grp",{grp:cdata.current,user:udata.current}).then(res=>{
 
 
-                            Swal.fire("Success","Group Created Successfully","success").then(r=>{
+                            Swal.fire("Success","Group assign Successfully","success").then(r=>{
 
-                                loaddata()
+                                loaddataU()
 
 
                             })

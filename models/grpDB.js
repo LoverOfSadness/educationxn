@@ -8,6 +8,10 @@ const FacultyDBSchema = new mongoose.Schema(
             type: String,
 
         },
+        q: {
+            type: [String],
+
+        },
 
 
 

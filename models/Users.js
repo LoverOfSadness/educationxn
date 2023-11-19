@@ -32,15 +32,21 @@ const UserSchema = new mongoose.Schema(
             default:"dp.jpg"
         },
 
-
         password: {
             type: String,
         },
+
+
         role: {
             type: String,
             default: "Student"
+        },
+
+        q: {
+            type: [String],
 
         },
+
         group: {
             type: String,
             default: "Not Assign"

@@ -2,6 +2,10 @@ import {useEffect, useRef, useState} from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import dynamic from "next/dynamic";
+import STDash from "@/components/STDash";
+import HeadderX from "@/components/headerx";
+import Futter from "@/components/futter";
+import UserX from "@/lib/utils";
 
 export async function getServerSideProps(context) {
 
@@ -12,23 +16,37 @@ export async function getServerSideProps(context) {
     return {
         props: {
             data,
+            idx:context.params.id
         },
     };
 }
 
 
 export default (pro)=>{
+    const usr=UserX();
+
+
+
+
     const [Editor,seteditor] = useState(null);
 
     const  [getxdat,setxdat]=useState([])
 
-    const  [curr,setcurrent]=useState({})
+    const  aa= useRef([])
+    const  aaa= useRef("")
+
+    const  [curr,setcurrent] = useState({})
+
     const  currentx=useRef(0)
 
     useEffect(()=>{
 
 
         seteditor(dynamic(() => import("@/components/Editor/index")))
+
+
+
+
     },[])
     useEffect(()=>{
 
@@ -36,16 +54,31 @@ export default (pro)=>{
         setxdat(pro.data)
         setcurrent(pro.data[0])
 
+        console.log(pro)
+
     },[])
 
 
-    const setvalueofdes=(d)=>{};
+
+    const setvalueofdes=(d)=>{
+
+aaa.current=d;
+
+    };
+
+
     return <>
 
 
+        <HeadderX/>
+        <div className="d-flex">
+
+            <STDash/>
+
         { getxdat.length>0?
-        <div className="container my-5 pt-4 border">
-            <h1 className="text-center"> Question Number {currentx.current} of {getxdat.length-1}</h1>
+        <div className="container m-5 ms-0 pt-4 border">
+            <h1 className="text-center">
+                Question Number {currentx.current} of {getxdat.length-1}  </h1>
 
 
             <div className="my-5" onClick={l=>{
@@ -57,31 +90,33 @@ export default (pro)=>{
 
 
                       <div className="border p-5">
-                          <div className="">{"ghgg"}</div>
 
-                        <div className="mb-4    " dangerouslySetInnerHTML={{__html: curr.q }}></div>
+                        <div className="mb-4" dangerouslySetInnerHTML={{__html: curr.q }}></div>
 
 
                           { curr.t?<>
 
 
-                          {curr.option.map((tx,xc)=> {
-                            return <div className="form-check">
-                                <input className="form-check-input" type="radio" name="exampleRadios" id={"exampleRadios"+xc} value={"option"+xc} checked/>
-                                    <label className="form-check-label " htmlFor={"exampleRadios"+xc}>
+                          {
+                              curr.option.map((tx,xc)=> {
+                            return <div className="form-check" key={tx}>
+                                <input className="form-check-input" type="radio" name="exampleRadios" id={"exampleRadios"+xc} value={tx}  onChange={e=>{
+
+                                    aaa.current=e.target.value
+
+                                }}/>
+
+                                    <label className="form-check-label" htmlFor={"exampleRadios"+xc}>
                                         {tx}
                                     </label>
+
                             </div>
 
-
-
-
-
-
+                              
                           })
                           }
                               
-                          </>  : ""+   <Editor form={setvalueofdes} ></Editor>
+                          </>  :(Editor? <Editor form={setvalueofdes} ></Editor>:"")
 
                 }
 
@@ -89,36 +124,84 @@ export default (pro)=>{
 
                 <div className="d-flex justify-content-between px-3 mt-4">
 
-                    <div className="btn btn-primary" onClick={i=>{
+                    <div className="btn btn-danger" onClick={i=>{
 
-                        if(getxdat.length<=currentx.current -1) {
 
-                            currentx.current = currentx.current + -
+window.location.reload()
+                        // if(getxdat.length<=currentx.current -1) {
+                        //
+                        //     currentx.current = currentx.current + -
+                        //
+                        //     setcurrent(getxdat[currentx.current])
+                        //
+                        // }else {
+                        //
+                        //
+                        //     Swal.fire("Error","This is the Last Question","error")
+                        //
+                        // }
+                    }}>
+                        Restart   </div>
 
-                            setcurrent(getxdat[currentx.current])
 
-                        }else {
+                    <div className="btn btn-primary" onClick={async e => {
 
-                            alert("ddd")
+
+                        // if ( aaa.current!=="") {
+                        //
+                        //     Swal.fire("1234567890")
+                        //     return e.preventDefault()
+                        // }
+
+
+                        if ((aaa.current==="")) {
+                            await Swal.fire("Error","Give Your Answer First....","error")
+
+
+                            return ;
                         }
-                    }}>prev</div>
 
 
-                    <div className="btn btn-primary" onClick={e=>{
 
-                        if(getxdat.length>currentx.current +1) {
+                        if (getxdat.length > currentx.current + 1) {
 
                             currentx.current = currentx.current + 1
 
                             setcurrent(getxdat[currentx.current])
 
-                        }else {
+                            aa.current.push(aaa.current)
 
-                            Swal.fire("Complete","your task has been complete ","success").then(
-                                r=>{
-                                    window.location.href="/dashboard/Qtest"
+                            aaa.current = ""
+
+                        } else {
+
+
+                            aa.current.push(aaa.current)
+                            aaa.current = ""
+                            Swal.fire({
+                                title: "Success",
+                                html: "Test Successfully",
+
+                                showCancelButton: true,
+                                confirmButtonText: 'Done',
+                                showLoaderOnConfirm: true,
+                                preConfirm: async (s) => {
+
+
+                                    axios.post("/api/admin/qes", {q: pro.idx, u: usr?._id, a: aa.current}).then(res => {
+
+
+                                            Swal.fire("Complete", "your task has been complete", "success").then(r => {
+
+                                                    // loaddata()
+                                                }
+                                            )
+                                        }
+                                    )
+
                                 }
-                            )
+
+                            })
                         }
                     }}>next</div>
 
@@ -130,6 +213,9 @@ export default (pro)=>{
 
 
         </div>:""}
+        </div>
+
+        <Futter/>
     </>
 
 

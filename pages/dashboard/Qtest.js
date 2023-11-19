@@ -1,5 +1,8 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import STDash from "@/components/STDash";
+import HeadderX from "@/components/headerx";
+import Futter from "@/components/futter";
 
 export default ()=>{
 
@@ -18,11 +21,17 @@ export default ()=>{
 
     return <>
 
-        <div className="container my-5 pt-4 border">
-        <h1 className="text-center"> Current Available Test </h1>
+
+        <HeadderX/>
+        <div className="d-flex">
 
 
-            <div className="my-5">
+            <STDash/>
+        <div className="container  border m-4">
+        <h1 className="text-center my-3"> Current Available Test </h1>
+
+
+            <div className="">
 
 
                 { getxdat.map(r=>{
@@ -48,6 +57,10 @@ export default ()=>{
 
 
         </div>
+
+
+        </div>
+        <Futter/>
     </>
 
 

@@ -19,8 +19,9 @@ const STDash = () => {
             <p className="px-2"><FaAngleRight className="text-white" /> <a className="text-white" href={"/dashboard/assV"}>Announcement</a></p>
             <p className="px-2"><FaAngleRight className="text-white" /><a className="text-white" href={"/dashboard/asgnV"}> Assignment</a></p>
             <p className="px-2"><FaAngleRight className="text-white" /><a className="text-white" href={"/dashboard/cmatV"}> Course Material</a></p>
-            <p className="px-2"><FaAngleRight className="text-white" /><a className="text-white" href={"/dashboard/faq"}> Take Test</a></p>
-            <p className="px-2"><FaAngleRight className="text-white" /> <a className="text-white" href={"/dashboard/disV"}> Discussion Area</a></p>
+            <p className="px-2"><FaAngleRight className="text-white" /><a className="text-white" href={"/dashboard/Qtest"}> Take Test</a></p>
+            <p className="px-2"><FaAngleRight className="text-white" /> <a className="text-white" href={"/dashboard/meet"}> Current Class</a></p>
+            {/*<p className="px-2"><FaAngleRight className="text-white" /> <a className="text-white" href={"/dashboard/disV"}> Discussion Area</a></p>*/}
 
 
           <h5 className="fw-bold w-100 p-2 "  style={{ background: 'linear-gradient(to right, #e4b845, #f8e685)'}}> My Portal</h5>

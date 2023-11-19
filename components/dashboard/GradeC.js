@@ -1,6 +1,24 @@
-import  {Table} from "react-bootstrap";
+import {useEffect, useState} from "react";
+import axios from "axios";
+import UserX from "@/lib/utils";
+
 
 export default function (){
+
+    const usr=UserX()
+    const [getx,setx]=useState([])
+
+    useEffect(()=>{
+
+        if (usr)
+        axios.get("/api/admin/qes?id="+usr?._id).then(r =>{
+
+
+            setx(r.data)
+        })
+
+
+    },[usr])
 
     return <div className="container-fluid bg-white mt-1">
 
@@ -12,43 +30,26 @@ export default function (){
                 <table className="table table-bordered text-white" style= {{backgroundColor:"#013571"}}>
                     <thead >
                     <tr className="bg-danger">
-                        <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Student Name</th>
+                        <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Test Name</th>
                         <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Total Marks</th>
-                        <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Marks Obtaied</th>
+                        <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Marks Obtained</th>
                         <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Grade</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr >
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>Alice Johnson</td>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>95</td>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>85</td>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>A</td>
-                    </tr>
-                    <tr>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>Bob Smith</td>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>98</td>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>92</td>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>A+</td>
-                    </tr>
-                    <tr>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>Lisa Davis</td>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>88</td>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>75</td>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>B</td>
-                    </tr>
-                    <tr>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>John Wilson</td>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>92</td>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>88</td>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>A</td>
-                    </tr>
-                    <tr>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>Raju</td>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>100</td>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>0</td>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>0</td>
-                    </tr>
+
+
+
+                    {getx.map(rt=> {
+                        return <tr>
+                            <td className="text-white" style={{backgroundColor: "#013571"}}>{rt.q}</td>
+                            <td className="text-white" style={{backgroundColor: "#013571"}}>{rt.x[0]}</td>
+                            <td className="text-white" style={{backgroundColor: "#013571"}}>{rt.x[1]}</td>
+                            <td className="text-white" style={{backgroundColor: "#013571"}}>{rt.x[2]}</td>
+                        </tr>
+
+                    })
+                }
 
                     </tbody>
                 </table>
