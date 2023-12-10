@@ -6,10 +6,11 @@ import FacultyX from "@/components/dashboard/FacultyX";
 import {Field, Form, Formik} from "formik";
 import axios from "axios";
 import toast from "react-hot-toast";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import dynamic from "next/dynamic";
 import {coursesX} from "@/lib/Rh";
 import {Modal} from "react-bootstrap"
+import Swal from "sweetalert2";
 
 
 export default ()=>{
@@ -34,7 +35,10 @@ export default ()=>{
     const [Editor,seteditor] = useState(null);
 
     const [mtitle,setmtitle] = useState(null);
+
     const [mdata,setmdata] = useState(null);
+
+    const xty = useRef(null);
 
 
     function loaddata() {
@@ -92,6 +96,8 @@ export default ()=>{
         descrtx=""+rtzg
 
     }
+
+
     return  <div className="bg-white">
 
         <HeadderX/>
@@ -113,26 +119,39 @@ export default ()=>{
                 <h3 className="p-3 rounded w-100 mt-3 fixed-bottom text-center btn" style={{backgroundColor:"#013571",color:"white"}} onClick={(e)=>{
 
 
-                    toast.promise(axios.post("/api/admin/noti", {
 
-                            email: mdata?.email,
-                        sub:document.getElementById("coursex").value,
-                        body:descrtx
+                    Swal.fire({
+
+                        title:"Sending Email....",
+                        allowOutsideClick:false,
+                        didOpen() {
+                            Swal.showLoading()
 
 
-                        }),{
-                            loading: 'Loading...',
-                            success: <b>Grade is Set</b>,
-                            error: <b>Could not Set.</b>,
+                            axios.post("/api/admin/noti", {
 
+                                email: mdata?.email,
+                                sub: document.getElementById("coursex").value,
+                                body: descrtx
+
+
+                            }).then(y=>{
+
+
+                                Swal.hideLoading()
+
+                                Swal.fire("Success","Email Has Sent","success")
+                            })
+                        }}
+
+                            )
                         }
 
-                    ).then(()=>{
 
 
-                    })
 
-                }}> Send Message </h3>
+
+                }> Send Message </h3>
 
             </Modal.Body>
 
@@ -155,10 +174,21 @@ export default ()=>{
 
 
 
+                                xty.current=xdat.filter( io =>(io.group === r.target.value  )).map(y=>y.email)
+
+
+
+
+
+
+
+
+
+
 
                             }}>
-                                <option value={"1234567890"}>Choise Course</option>
-                                {coursesX.map((valuex,ing) => <option key={ing} className="form-control py-5" value={valuex}>{valuex}</option>)}
+                                <option value={"1234567890"}>Select Classroom</option>
+                                {[ ... new Set(xdat.map(i=>i.group))].map((valuex,ing) => <option key={ing} className="form-control py-5" value={ valuex }>{valuex}</option>)}
 
                             </select>
 
@@ -172,23 +202,54 @@ export default ()=>{
                            </div>
                             <div className="d-flex mb-4 justify-content-center text-center">
                                 <div className="w-75 position-relative" onClick={
-                                    async event => {
 
-                                        const  rt=document.getElementById("course").value;
+                                    rty=> {
 
-                                        if (rt==="1234567890") return toast.error("Select course");
 
-                                        //     const Response = await axios.post("/api/admin/noti", {
-                                        //         title: document.getElementById("rtfile").value,
-                                        //         data: descrtx,
-                                        //         course: rt ,
-                                        //     });
-                                        // seteditor(dynamic(() => import("@/components/Editor/index")))
+                                        Swal.fire({
 
-                                        const form = document.getElementById("xrt");
-                                            form.reset();
-                                            // loaddata()
-                                        }
+                                            title:"Sending Email....",
+                                            allowOutsideClick:false,
+                                            didOpen() {
+                                                Swal.showLoading()
+
+
+                                                axios.post("/api/admin/noti", {
+
+                                                    gx: xty.current,
+                                                    sub: document.getElementById("rtfile").value,
+                                                    body: descrtx
+
+
+                                                }).then(y=>{
+
+
+                                                    Swal.hideLoading()
+                                                    Swal.fire("Success","Email Has Sent","success")
+
+
+                                                })
+                                            }}
+
+                                        )
+                                    }
+                                    // async event => {
+                                    //
+                                    //     const  rt=document.getElementById("course").value;
+                                    //
+                                    //     if (rt==="1234567890") return toast.error("Select course");
+                                    //
+                                    //     //     const Response = await axios.post("/api/admin/noti", {
+                                    //     //         title: document.getElementById("rtfile").value,
+                                    //     //         data: descrtx,
+                                    //     //         course: rt ,
+                                    //     //     });
+                                    //     // seteditor(dynamic(() => import("@/components/Editor/index")))
+                                    //
+                                    //     const form = document.getElementById("xrt");
+                                    //         form.reset();
+                                    //         // loaddata()
+                                    //     }
                                     }
                                 >
                                     {progressX >0 ?<div className="rounded bg-warning position-absolute btn w-100 h-100" ><p className="text-white "> {progressX==1?"Send Email to all Student":progressX *100+"%"} </p></div>:""}

@@ -51,6 +51,7 @@ export default (prop)=>{
 
         <input type="file" onChange={hadlser} className="w-100 form-control"/>
 
+
         { ( progressX >0  && progressX< 1 ) ?<div className="text-center bg-success" style={{width: (progressX*100)+"%"}}>
 
             {progressX *100}%

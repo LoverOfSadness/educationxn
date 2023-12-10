@@ -289,7 +289,7 @@ setIsOpen(true)
                             cdata.current=e.target.value
                         }}>
 
-                            <option value="" >Select a Student Group</option>
+                            <option value="" >Select a Classroom</option>
                             {getusr.map(valu => {
                                 return <option key={valu._id} value={valu.name}>{valu.name}</option>
                             })
@@ -366,7 +366,7 @@ setIsOpen(true)
                             })
 
 
-                        }}> Assign to Group</div>
+                        }}> Assign to Classroom.</div>
                     </div>
 
 

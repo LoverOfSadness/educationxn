@@ -78,7 +78,7 @@ aaa.current=d;
         { getxdat.length>0?
         <div className="container m-5 ms-0 pt-4 border">
             <h1 className="text-center">
-                Question Number {currentx.current} of {getxdat.length-1}  </h1>
+                Question Number {currentx.current+1} of {getxdat.length}  </h1>
 
 
             <div className="my-5" onClick={l=>{
@@ -193,6 +193,7 @@ window.location.reload()
 
                                             Swal.fire("Complete", "your task has been complete", "success").then(r => {
 
+                                                window.location.href="/dashboard/Qtest"
                                                     // loaddata()
                                                 }
                                             )

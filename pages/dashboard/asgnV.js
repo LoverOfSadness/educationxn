@@ -40,7 +40,10 @@ export default ()=>{
 
 
     function loaddata() {
-        axios.get("/api/admin/asgn").then(value => {
+
+
+
+        axios.get("/api/admin/asgn?id="+JSON.parse(localStorage.getItem("user")).group).then(value => {
 
 
             setxdat(value.data);
@@ -97,6 +100,8 @@ export default ()=>{
     return  <div className="bg-white">
 
 
+
+        <HeadderX/>
 
         <Modal show={isOpen} onHide={hideModal} fullscreen={true} >
             <Modal.Header>

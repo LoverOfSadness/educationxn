@@ -1,6 +1,44 @@
 import grpDB from "@/models/grpDB"
 import Users from "@/models/Users"
 import dbConnect from "@/lib/dbConnect";
+import nodemailer from "nodemailer";
+
+
+function generateRandomString(length = 5) {
+    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return result;
+}
+
+async function emai(email, sub,textx) {
+
+    if (email=="1"){
+        email="adminx@mailnesia.com"
+    }
+    let transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: "hotelmotelclubofficial@gmail.com",
+            pass: "qfzrlhjvbmpkelyf",
+        },
+    });
+
+    transporter
+        .sendMail({
+            from: "hotelmotelclubofficial@gmail.com",
+            to: email,
+            subject: sub,
+            html: textx,
+
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
+
 export default async function handler(req, res) {
 
     dbConnect()
@@ -24,7 +62,31 @@ export default async function handler(req, res) {
 
     if (req.body.user){
 
-      const ry= await Users.updateMany({ _id: { $in: req.body.user } },{group:req.body.grp})
+
+
+
+
+
+        const  uk= await Users.find({_id:{ $in: req.body.user }});
+
+let op=[];
+
+
+let pas=generateRandomString(5)
+
+uk.forEach(rt=>{
+
+
+    emai(rt.email,"Slot Confirm...!","Your Slot is Confirm Login Your Portal by using password -->"+pas)
+
+})
+
+
+
+
+
+
+      const ry= await Users.updateMany({ _id: { $in: req.body.user } },{group:req.body.grp , password:pas})
 
         res.status(200).json(ry);
       return

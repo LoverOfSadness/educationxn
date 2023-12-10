@@ -20,10 +20,10 @@ await dbConnect()
 
 
 
-        let access_token = (await axios.post("https://zoom.us/oauth/token?grant_type=account_credentials&account_id=cuG2beDYQsKX95G6MLDylg", null, {
+        let access_token = (await axios.post("https://zoom.us/oauth/token?grant_type=account_credentials&account_id=elwoykshRr6nCzMVv2WiVQ", null, {
 
             headers: {
-                'Authorization': 'Basic ' + Buffer.from("nOi8JiPR92DltwEgfaaYg:0MEMbuLum1StDPMtMLgzyBKSPeibOGTO").toString('base64')
+                'Authorization': 'Basic ' + Buffer.from("HhzN2OReTT2JnLdlOTjVw:s262T65pUW2NbWZUoL2nnwYOFCPIUzwS").toString('base64')
             }
         })).data.access_token
 

@@ -113,7 +113,7 @@ export default ()=>{
 <div className="container">
 
 
-    <h4>Manage Group</h4>
+    <h4>Manage Students</h4>
     <div className=" p-4 rounded border">
     <div className="d-flex justify-content-between"
     >
@@ -126,6 +126,8 @@ loaddataU(event.target.value)
 
 
         }}>
+
+
 <option>Select Group</option>
             {getxdat.map(valu => {
 
@@ -134,7 +136,11 @@ loaddataU(event.target.value)
 
             }
 
-        </select><div className="d-flex">
+        </select>
+
+
+
+        <div className="d-flex">
         <div className="btn btn-primary" onClick={(o)=>{
             Swal.fire({
                 title: 'Group Name',
@@ -187,6 +193,7 @@ loaddataU(event.target.value)
                 <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Student Name</th>
                 <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Student Email</th>
                 <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Phone Number</th>
+                <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Student Course</th>
                 <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Action</th>
             </tr>
             </thead>
@@ -199,15 +206,17 @@ loaddataU(event.target.value)
                         <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.name}</td>
                         <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.email}</td>
                         <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.phone}</td>
+                        <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.role}</td>
                         <td  className="text-white " style= {{backgroundColor:"#013571"}}>
 
 
                             <div className="d-flex justify-content-center">
 
-                                <div className="mx-3 text-white" onClick={t=>{
+                                <div className="mx-3 text-white btn" onClick={t=>{
 
                                     txc.current=value
                                     setIsOpen(true)
+
                                 }}>View</div>
                                 <input type={"checkbox"} onChange={event =>
                                 {

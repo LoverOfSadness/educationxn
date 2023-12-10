@@ -1,245 +1,231 @@
-import STDash from "@/components/STDash";
-import AdminDash from "@/components/AdminDash";
-import Futter from "@/components/futter";
-import HeadderX from "@/components/headerx";
-import FacultyX from "@/components/dashboard/FacultyX";
-import {Field, Form, Formik} from "formik";
-import axios from "axios";
-import toast from "react-hot-toast";
-import {useEffect, useState} from "react";
-import dynamic from "next/dynamic";
-import {coursesX} from "@/lib/Rh";
-import {Modal} from "react-bootstrap"
 
+import React, {useEffect, useRef, useState} from "react";
+
+import Swal from "sweetalert2";
+import Modal from "react-bootstrap/Modal";
+import axios from "axios";
+import {FaEnvelope, FaKey, FaPeopleArrows, FaTrash, FaUser} from "react-icons/fa";
+import dynamic from "next/dynamic";
+import AdminDash from "@/components/AdminDash";
+import UploadX from "@/components/UploadX";
+import {rtx} from "@/lib/Rh";
 
 export default ()=>{
+    const  [getudat,setudat]=useState([])
+    const  [isOpen,setIsOpen]=useState(false)
+    const  [isOpenE,setIsOpenE]=useState(false)
+
+    const [xtxcc,xxxtt] = useState("");
+    const cdata=useRef("")
 
 
-    const [isOpen, setIsOpen] = useState(false);
 
-    const showModal = () => {
-        setIsOpen(true);
-    };
-
-    const hideModal = () => {
-        setIsOpen(false);
-    };
+    const  [getxdat,setxdat]=useState([])
 
 
-    const progressX=1;
+    function loaddataU(s="u") {
 
 
-    const [getfile,setfilex] = useState();
-    const [xdat,setxdat] = useState([]);
-    const [Editor,seteditor] = useState(null);
-
-    const [mtitle,setmtitle] = useState(null);
-    const [mdata,setmdata] = useState(null);
+        axios.get("/api/admin/grp").then(value => {
 
 
-    function loaddata() {
-        axios.get("/api/admin/fac").then(value => {
 
 
             setxdat(value.data);
 
-            console.log(value.data);
+
+        })
+
+        axios.get("/api/admin/fac").then(value => {
+
+
+            setudat(value.data);
 
         })
 
     }
 
-    useEffect(()=>{
+    useEffect(() => {
+        loaddataU()
+    }, []);
 
 
-        seteditor(dynamic(() => import("@/components/Editor/index")))
-        loaddata();
-    },[])
-
-    async function hadlser(d) {
-        const file = d.currentTarget.files[0];
 
 
-        let f = new FormData()
-        f.append("file", file);
-        try {
-            const Response = await axios.post("/api/upload", f,{
-
-                onUploadProgress(r){
-                    setprogressX(  r.progress);
-                }
-            });
-
-            if (Response) {
-
-                setfilex(Response.data.name)
-
-                toast("added")
-            }
 
 
-        } catch (err) {
-            console.log(err);
-        }
 
 
-    }
-    let descrtx;
+    return<>
 
-    async function setvalueofdes  (rtzg)  {
 
-        descrtx=""+rtzg
 
-    }
-    return  <div className="bg-white">
-
-        <HeadderX/>
-
-        <Modal show={isOpen} onHide={hideModal} fullscreen={true} >
-            <Modal.Header>
-                <Modal.Title><div className="text-center">{mtitle}</div></Modal.Title>
-                <button onClick={hideModal} className="bg-transparent border-0 h1 m-0">&times;</button>
-            </Modal.Header>
-            <Modal.Body>      <div dangerouslySetInnerHTML={{ __html: mdata }} />
-            </Modal.Body></Modal>
         <div className="d-flex">
+
             <AdminDash/>
-            <div className="d-flex w-100 justify-content-center  container text-center" style={{backgroundColor:"lightslategrey"}}>
-
-                <div className="w-100">
-
-                    <h3 className="p-3 rounded w-100 mt-3" style={{backgroundColor:"#013571",color:"white"}}> Manage Course Information  </h3>
 
 
-                    <form id="xrt" className="">
 
-                        <input name="title" id="rtfile"   placeholder="Title.........." className="form-control mt-3">
-                        </input>
 
-                        <select  id="course" className="form-control my-2">
-                            <option value={"1234567890"}>Choise Course</option>
-                            {coursesX.map(valuex => <option className="form-control" value={valuex}>{valuex}</option>)}
 
+
+            <Modal show={isOpen} onHide={(i)=>{setIsOpen(false)}} fullscreen={false}  centered={true} onEscapeKeyDown={ip=>{ip.preventDefault()}}>
+                <Modal.Header style={{backgroundColor:"#013571",color:"white"}}>
+                    <div className="w-100 h3"><div className="text-center">Add New Member</div>
+                    </div>
+                    <button onClick={(i)=>{setIsOpen(false)}} className="bg-transparent border-0 h1 m-0">&times;</button>
+                </Modal.Header>
+                <Modal.Body style={{backgroundColor:"#013571",color:"white"}}>
+
+
+                    <div className="card  bg-transparent p-5" style={{
+                    }}>
+
+                        <UploadX cb={xxxtt}/>
+                        <input type="text"  name="name" className="form-control my-1 rtx" placeholder="Name"/>
+                        
+                        <input type="text"  name="position" className="form-control my-1 rtx" placeholder="Position"/>
+
+
+
+                        <select name="grp" className="form-control rtx">
+                            <option value="">
+
+                                Select Classroom
+                            </option>
+                            {
+                                getxdat.map((p)=>{
+                                    return <option value={p.name}>{p.name}</option>
+                                })
+                            }
                         </select>
 
-                        <div className="bg-white my-3 rounded">
-                            {Editor? <Editor form={setvalueofdes}></Editor>:""}
+
+
+
+
+
+
+
+
+
+                        <div className="mt-3 align-self-center">
+
+                            <div className="btn btn-primary" onClick={event => {
+
+
+                                let r= document.querySelectorAll(".rtx")
+
+                                let dat={}
+
+                                r.forEach(rx=>{
+                                    dat[rx.name]=rx.value
+                                })
+
+                                dat["dp"]=xtxcc
+
+
+                                Swal.fire(
+                                    {title:"Details are",html: '<div style="white-space: pre-wrap;">'+JSON.stringify(dat) +"</div>",icon:"info",
+
+                                        showCancelButton:true,
+                                        showLoaderOnConfirm:true,
+
+                                        preConfirm:async () => {
+
+                                            Swal.showLoading()
+
+                                            return await axios.post("/api/admin/fac", dat).then(r => {
+
+                                                Swal.fire("Success", "Member added", "success").then(y=>{
+
+                                                    setIsOpen(false)
+
+                                                    window.location.reload()
+                                                })
+
+
+                                            })
+
+
+                                        }
+
+
+                                    })
+
+
+
+                            }}
+                            ><FaUser/> Add </div>
 
                         </div>
+                    </div>
 
+                </Modal.Body>
 
-
-                        <div className="d-flex justify-content-center text-center">
-                            <div className="w-75 position-relative" onClick={
-                                async event => {
-
-                                    const  rt=document.getElementById("course").value;
-
-                                    if (rt=="1234567890") return toast.error("Select course");
-
-                                    const Response = await axios.post("/api/admin/fac", {
-                                        title: document.getElementById("rtfile").value,
-                                        data: descrtx, // Assuming getfile is defined elsewhere
-                                        course: rt , // Assuming getfile is defined elsewhere
-                                    });
-                                    seteditor(dynamic(() => import("@/components/Editor/index")))
-
-                                    const form = document.getElementById("xrt");
-                                    form.reset();
-                                    loaddata()
-                                }
-                            }
-                            >
-                                {progressX >0 ?<div className="rounded bg-warning position-absolute btn w-100 h-100"><p className="text-white"> {progressX==1?"Add New Item":progressX *100+"%"} </p></div>:""}
-                                <button type="submit" className="btn  w-100 bg-transparent" >.</button>
-                            </div>
-                        </div>
-                    </form>
-
-
-
-
-                    <ul className="list-group mb-5 mt-2 ">
-                        {xdat.map((item) => (
-                            <li key={item._id} className="list-group-item">
-
-
-                                {item.title}
-
-                                <div className="float-end ">
-
-                                    <button className="btn btn-primary btn-sm me-3" onClick={()=>{
-
-                                        setmdata(item.data)
-                                        setmtitle(item.title)
-                                        showModal()
-
-                                    }}>View</button>
-                                    <button
-                                        onClick={() => {
-
-                                            toast.promise(axios.delete(`/api/admin/ass?id=${item._id}`), {
-                                                loading: 'deleting...',
-                                                success: <b>deleted</b>,
-                                                error: <b>Could not deleted.</b>,
-                                            }).then(()=>
-
-                                                {
-
-                                                    loaddata()
-                                                }
-                                            )
-
-
-
-
-                                        }}
-                                        className="btn btn-danger btn-sm float-right"
-                                    >
-                                        Delete
-                                    </button>
-                                </div>
+            </Modal>
 
 
 
 
 
-                            </li>
+            <div className="container-fluid py-3 bg-white rounded">
+
+
+                <div className="container  text-center">
+
+
+                    <div className="btn btn-primary float-end my-2" onClick={u=>{
+
+                        setIsOpen(true)
+                    }}>Add</div>
+
+
+                    <table className="table table-bordered table-striped table-light">
+                        <thead>
+                        <tr>
+                            <th scope="col">Images</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Position</th>
+                            <th scope="col">Classroom</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+
+                        {getudat.map( (et,ind)=>{
 
 
 
+                            return <tr key={ind}>
+                                <td><img src={rtx.cdn+"/"+ et.dp} width={60} height={60} alt=""/></td>
+                                <td className=" pt-4">{et.name}</td>
+                                <td className=" pt-4" >{et.position}</td>
+                                <td className=" pt-4">{et.grp}</td>
+                                <td className="" onClick={r=>{
+
+                                    axios.delete("/api/admin/fac?id="+et._id).then(o=>{
+
+                                        window.location.reload()
+                                    })
+                                }}>
+                                    <div className="btn btn-danger mt-2">
+
+                                        <FaTrash/> delete
+                                    </div>
+                                </td>
 
 
+                            </tr>
 
 
-
-
-
-
-
-                        ))}
-                    </ul>
-
-
-
-
-
-                </div>
-
-
-
-            </div>
-
-
+                        })
+                        }
+                        </tbody>
+                    </table>
+                </div></div>
 
         </div>
-
-
-
-        <Futter/>
-
-
-
-
-    </div>
+    </>
 }

@@ -10,6 +10,7 @@ import {useEffect, useState} from "react";
 import dynamic from "next/dynamic";
 import {coursesX} from "@/lib/Rh";
 import {Modal} from "react-bootstrap"
+import Swal from "sweetalert2";
 
 
 export default ()=>{
@@ -30,7 +31,13 @@ export default ()=>{
 
 
     const [getfile,setfilex] = useState();
+
+
     const [xdat,setxdat] = useState([]);
+
+
+    const [xt,setxt] = useState([]);
+
 
     const [xdatt,setxdatt] = useState([]);
 
@@ -42,6 +49,23 @@ export default ()=>{
 
 
     function loaddata() {
+
+        axios.get("/api/admin/grp").then(value => {
+
+
+
+            setxt(value.data);
+
+
+        })
+
+
+
+
+
+
+
+
         axios.get("/api/admin/asgn").then(value => {
 
 
@@ -129,7 +153,7 @@ export default ()=>{
                         <tr className="bg-danger">
                             <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Student Name</th>
                             <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Student Email</th>
-                            <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Marks Obtaied</th>
+                            <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Student Phone Number</th>
                             {/*<th className="text-white" style= {{backgroundColor:"#e4b845"}}>Grade</th>*/}
                             <th  className="text-white" style= {{backgroundColor:"#e4b845"}}>Action</th>
                         </tr>
@@ -211,8 +235,11 @@ export default ()=>{
                             </input>
 
                           <select  id="course" className="form-control my-2">
-<option value={"1234567890"}>Choise Course</option>
-                              {coursesX.map(valuex => <option className="form-control" value={valuex}>{valuex}</option>)}
+
+
+
+<option value={"1234567890"}>Select Classroom</option>
+                              {xt.map(valuex => <option className="form-control" value={valuex.name}>{valuex.name}</option>)}
 
                           </select>
 
@@ -267,22 +294,29 @@ export default ()=>{
                                     setmdata(item.data)
                                     setmtitle(item.title)
 
- toast.promise(
-     axios.get("/api/assr?id="+item._id)
-
-     ,{
-    loading: 'Loading...',
-    success: <b>deleted</b>,
-    error: <b>Could not Load.</b>,
-
-}).then((value)=>{
 
 
-     setxdatt(value.data);
-     //
-showModal();
 
- })
+                              Swal.fire({title:"loading",
+
+                              didOpen:(u)=> {
+
+                                  Swal.showLoading()
+
+                                  axios.get("/api/assr?id="+item._id).then(ee=>{
+
+                                      setxdatt(ee.data);
+                                      //
+                                      showModal();
+
+                                      Swal.close()
+
+
+                                  })
+                              }
+                              })
+
+
 
                                 }}>View</button>
                                 <button

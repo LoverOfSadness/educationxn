@@ -11,6 +11,9 @@ const FacultyDBSchema = new mongoose.Schema(
         link: {
             type: String,
 
+        },  course: {
+            type: String,
+
         },
 
 

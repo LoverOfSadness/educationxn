@@ -43,7 +43,7 @@ export default () =>{
     const [xdat,setxdat] = useState([]);
 
     function loaddata() {
-        axios.get("/api/admin/cinfo").then(value => {
+        axios.get("/api/admin/cinfo?id="+JSON.parse(localStorage.getItem("user")).group).then(value => {
 
 
             setxdat(value.data);

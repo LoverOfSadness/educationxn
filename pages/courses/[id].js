@@ -79,7 +79,7 @@ export default function Id(pro) {
                 <div className="col-4">
                     {/*<Carousel controls={false} interval={4000} pause={false}>*/}
                     {/*    <Carousel.Item>*/}
-                    <img src={rtx.cdn+"uploads/"+xdat.thumb} className="" width="300px" height="450px"/>
+                    <img src={rtx.cdn+"/"+xdat.thumb} className="" width="300px" height="450px"/>
                     {/*</Carousel.Item> <Carousel.Item>*/}
                     {/*<img src="/img/otb1_png.png" width="300px" height="450px"/>*/}
                     {/*</Carousel.Item>*/}
@@ -119,7 +119,7 @@ export default function Id(pro) {
 
                     <div className="btn fw-bolder px-5 py-2 btn-outline-light ms-2"
                          style={{backgroundColor: "#013571"}} onClick={(r)=>{
-                             window.location.href="/admin/test"
+                             window.location.href=`/rext?rx=${xdat.name}&p=${xdat.price}`
                     }} > Register</div>
 
 

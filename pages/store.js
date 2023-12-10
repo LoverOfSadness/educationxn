@@ -62,7 +62,7 @@ export default function Store() {
 
                                 <div className="card" >
 
-                                    <img src={rtx.cdn+"uploads/"+tp.thumb} alt="" className="p-3 align-self-center" style={{maxHeight:"300px",maxWidth:"250px"}}/>
+                                    <img src={rtx.cdn+"/"+tp.thumb} alt="" className="p-3 align-self-center" style={{maxHeight:"300px",maxWidth:"250px"}}/>
                                     <div className="card-body">
                                         <div className="card-text text-center h2">
                                             {tp.name}

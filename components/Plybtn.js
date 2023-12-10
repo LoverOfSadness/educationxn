@@ -69,14 +69,14 @@ const PayPalButtonx = ({ amount, onSuccess, onError }) => {
                     purchase_units: [
                         {
                             amount: {
-                                value: '10.00', // Adjust this value based on your requirements
+                                value: amount, // Adjust this value based on your requirements
                             },
                         },
                     ],
                 });
             }}
 
-            amount={10}
+            amount={amount}
             onSuccess={onSuccess}
             onError={(op,p)=>{
                 console.log(op,p)

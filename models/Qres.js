@@ -16,7 +16,11 @@ const FacultyDBSchema = new mongoose.Schema(
         },
         x:{
             type: [String],
-            default:["X","X","X"]
+            default:["X","X"]
+        },
+        m:{
+            type:String,
+            default: "100"
         }
 
 

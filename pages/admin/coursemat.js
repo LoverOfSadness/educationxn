@@ -12,12 +12,26 @@ import {useEffect, useState} from "react";
 
 export default ()=>{
 
+    const [xt,setxt] = useState([]);
+
+
     const [getfile,setfilex] = useState();
     const [progressX,setprogressX] = useState();
     const [xdat,setxdat] = useState([]);
 
 
     function loaddata() {
+
+
+        axios.get("/api/admin/grp").then(value => {
+
+
+
+            setxt(value.data);
+
+
+        })
+
         axios.get("/api/admin/mat").then(value => {
 
 
@@ -88,6 +102,18 @@ useEffect(()=>{
 
                         <form id="xrt" className="">
 
+
+
+                            <select  id="course" name="course" className="form-control my-2">
+
+
+
+                                <option value={"1234567890"}>Select Classroom</option>
+                                {xt.map(valuex => <option className="form-control" value={valuex.name}>{valuex.name}</option>)}
+
+                            </select>
+
+
                             <textarea name="title" id="rtfile"   placeholder="Title.........." className="form-control mt-3 h-25">
 
                             </textarea>
@@ -107,7 +133,10 @@ useEffect(()=>{
 
 
                                         const Response = await axios.post("/api/admin/mat", {
+
+
                                             title: document.getElementById("rtfile").value,
+                                            course: document.getElementById("course").value,
                                             link: getfile, // Assuming getfile is defined elsewhere
                                         });
                                         const form = document.getElementById("xrt");
@@ -132,6 +161,12 @@ useEffect(()=>{
                             <li key={item._id} className="list-group-item d-flex justify-content-between">
                                 {item.title}
 
+
+                                <div className="">
+
+                                    {item.course}
+
+
                                 <button
                                     onClick={() => {
 
@@ -151,10 +186,12 @@ loaddata()
 
 
                                     }}
-                                    className="btn btn-danger btn-sm float-right"
+                                    className="btn btn-danger btn-sm float-right mx-2"
                                 >
                                     Delete
                                 </button>
+                                </div>
+
                             </li>
                         ))}
                     </ul>

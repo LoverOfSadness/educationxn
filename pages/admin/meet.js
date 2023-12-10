@@ -87,7 +87,7 @@ export default () => {
                         <Field type="text" name="sub" id="" placeholder={"Subject"}  className="form-control " />
                         <Field type="text" name="duration" id="" placeholder={"Duration"}  className="form-control " />
                         <Field as={"select"} className="form-control mt-1" name="group">
-                            <option>Select Group</option>
+                            <option>Select Classroom</option>
                             {getxdat.map(valu => {
 
                                 return <option key={valu._id} value={valu.name}>{valu.name}</option>
@@ -117,7 +117,7 @@ export default () => {
                         <tr className="">
                             <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Subject</th>
                             <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Duration</th>
-                            <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Group</th>
+                            <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Classroom</th>
                             <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Time</th>
                             <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Action</th>
 

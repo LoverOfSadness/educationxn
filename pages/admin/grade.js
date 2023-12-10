@@ -126,6 +126,13 @@ if (s!== "Not Assign") {
                             axios.post("/api/admin/qes?idx=" + txcxxx.current._id,u).then(r => {
 
 
+                                Swal.fire("Done","Result Submitted","success").then(r =>{
+
+                                    Swal.close()
+                                    setIsOpen(false);
+
+                                })
+
                             })
                         }
                     }

@@ -4,22 +4,42 @@ import STDash from "@/components/STDash";
 import HeadderX from "@/components/headerx";
 import Futter from "@/components/futter";
 import Swal from "sweetalert2";
+import UserX from "@/lib/utils";
 
 export default ()=>{
 
     const optionsx = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true };
     const  [getxdat,setxdat]=useState([])
 
+    const usr=UserX();
+
+
 
     useEffect(()=>{
-        axios.get("/api/admin/meet").then(value => {
+
+        if (usr)
+
+            axios.get("/api/admin/meet?groupx="+ usr.group ).then(value => {
 
 
-            setxdat(value.data);
+                setxdat(value.data);
 
 
-        })
-    },[])
+            })
+
+    },[usr])
+
+
+
+    // useEffect(()=>{
+    //     axios.get("/api/admin/meet").then(value => {
+    //
+    //
+    //         setxdat(value.data);
+    //
+    //
+    //     })
+    // },[])
 
     return <>
 

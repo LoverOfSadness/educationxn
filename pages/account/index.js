@@ -1,12 +1,13 @@
 import {FaFacebookF, FaGoogle, FaInstagram, FaTwitter} from "react-icons/fa6";
 import {Spinner} from "react-bootstrap";
 import {useState} from "react";
-import {FaSign} from "react-icons/fa";
+import {FaFrog, FaSign} from "react-icons/fa";
 import {Field, Form, Formik} from "formik";
 import axios from "axios";
 import toast from "react-hot-toast";
 import {useRouter} from "next/router";
 import UserX from "@/lib/utils";
+import Swal from "sweetalert2";
 
 export default  ()=> {
     const [Saving, setSaving] = useState(false);
@@ -139,8 +140,22 @@ export default  ()=> {
 
                             </button>
                             <br/>
-                            <a href="account/register" className="link-primary mt-4">Register</a>
-                            </div>
+                                <div className="link-primary btn" onClick={event => {
+
+                                    Swal.fire({
+                                        // title:"Forget Password",
+                                        html:"Enter Your Email Address",
+                                        input:"text",
+                                        icon:"question",
+                                        showCancelButton:true,
+                                        allowOutsideClick:false,
+                                        showConfirmButton:true,
+                                        confirmButtonText:"Reset Password"
+                                    })
+
+                                }}>
+                                    Forget Password
+                                </div>                            </div>
 
                     </div>
                 </div>

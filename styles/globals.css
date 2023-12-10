@@ -31,3 +31,9 @@ padding-right: 60%;
     cursor: pointer; /* Add a pointer cursor to indicate interactivity */
     border-radius: 4px; /* Rounded corners */
 }
+
+.bg-info{
+
+background: linear-gradient(to right, #e4b845, #f8e685)
+
+}

@@ -36,7 +36,25 @@ export default ()=>{
     const [mdata,setmdata] = useState(null);
 
 
+    const [srt,setgrp] = useState([]);
+
+    const [xt,setxt] = useState([]);
+
+
     function loaddata() {
+
+
+        axios.get("/api/admin/grp").then(value => {
+
+
+
+            setxt(value.data);
+
+
+        })
+
+
+
         axios.get("/api/admin/cinfo").then(value => {
 
 
@@ -47,6 +65,24 @@ export default ()=>{
         })
 
     }
+      function loaddatax() {
+
+
+
+        axios.get("/api/admin/store").then(value => {
+
+
+            setgrp(value.data);
+
+            console.log(value.data);
+
+        })
+
+    }
+
+
+
+
 
     useEffect(()=>{
 
@@ -54,7 +90,7 @@ export default ()=>{
         seteditor(dynamic(() => import("@/components/Editor/index")))
         loaddata();
 
-
+        loaddatax();
         
     },[])
 
@@ -118,11 +154,23 @@ export default ()=>{
                         <input name="title" id="rtfile"   placeholder="Title.........." className="form-control mt-3">
                         </input>
 
+
                         <select  id="course" className="form-control my-2">
-                            <option value={"1234567890"}>Choise Course</option>
-                            {coursesX.map(valuex => <option className="form-control" value={valuex}>{valuex}</option>)}
+
+
+
+                            <option value={"1234567890"}>Select Classroom</option>
+                            {xt.map(valuex => <option className="form-control" value={valuex.name}>{valuex.name}</option>)}
 
                         </select>
+
+
+
+
+
+
+
+
 
                         <div className="bg-white my-3 rounded">
                             {Editor? <Editor form={setvalueofdes}></Editor>:""}
@@ -170,7 +218,9 @@ export default ()=>{
 
                                 <div className="float-end ">
 
-                                    <button className="btn btn-primary btn-sm me-3" onClick={()=>{
+                                    {item.course}
+
+                                    <button className="btn btn-primary btn-sm mx-3" onClick={()=>{
 
                                         setmdata(item.data)
                                         setmtitle(item.title)

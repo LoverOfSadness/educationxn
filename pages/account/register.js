@@ -41,7 +41,6 @@ const  rt=UserX();
                             age:"",
                             phone:"",
                             addr:"",
-                            password:"",
 
 
 
@@ -117,7 +116,7 @@ const  rt=UserX();
                                 <Field name="phone"  className="form-control" placeholder="Phonne Number"/>
 
                             </div> <div className="form-outline mb-4">
-                            <Field name="password" type="password"  className="form-control" placeholder="Password"/>
+
 
                         </div>
 

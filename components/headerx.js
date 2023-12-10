@@ -51,10 +51,10 @@ const HeadderX = () => {
                             <Link href="/about">About</Link>
                         </li>
                         <li className="">
-                            <Link href="/courses/[id]">Courses</Link>
+                            <Link href="/store">Courses</Link>
                         </li>
                         <li className="">
-                            <Link href="/store">Store</Link>
+                            <Link href="/storex">Store</Link>
                         </li>
                         <li className="">
                             <Link href="/contact">Contact</Link>

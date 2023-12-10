@@ -1,6 +1,7 @@
 import dbConnect from "@/lib/dbConnect";
 import Cmatrial from "@/models/CmatrialDB"
 import {coursesX} from "@/lib/Rh";
+import AssDB from "@/models/CinfoDB";
 
 export default async function handler(req, res) {
     const {method} = req;
@@ -12,8 +13,10 @@ export default async function handler(req, res) {
         case "GET":
 
 
+            const user = req.query.id? await Cmatrial.find({course:req.query.id} ):await Cmatrial.find({});
 
-            const user = await Cmatrial.find({})
+
+            // const user = await Cmatrial.find({})
 
 
             res.status(200).json(user);
@@ -35,6 +38,7 @@ export default async function handler(req, res) {
                 const user = await Cmatrial.create({
                     title: req.body.title,
                     link: req.body.link,
+                    course: req.body.course,
 
                 });
 

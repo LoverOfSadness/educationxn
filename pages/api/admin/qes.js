@@ -24,9 +24,12 @@ export default async function handler(req, res) {
     if (req.query.id){
 let rpx;
         if (req.query.g){
+
             rpx = await Qres.find({u:req.query.id,q:req.query.g})
+
         }
         else {
+
              rpx = await Qres.find({u:req.query.id})
 
         }

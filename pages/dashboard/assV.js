@@ -38,7 +38,7 @@ export default ()=>{
 
 
     function loaddata() {
-        axios.get("/api/admin/ass").then(value => {
+        axios.get("/api/admin/ass?id="+ (JSON.parse(localStorage.getItem("user")).group )).then(value => {
 
 
             setxdat(value.data);

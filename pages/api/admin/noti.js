@@ -8,6 +8,8 @@ import nodemailer from "nodemailer";
 
 
 async function emai(email, sub,textx) {
+
+
     let transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -41,13 +43,28 @@ export default async function handler(req, res) {
         case "GET":
 
             const user = await Cmatrial.find({})
-
             res.status(200).json(user);
             break;
 
         case "POST":
 
             try {
+
+
+                if (req.body.gx){
+
+
+                    await emai(req.body.gx,req.body.sub,req.body.body)
+
+
+                    res.status(200).json({
+                        success: true,
+                        message:"Notification Send"
+                    })
+
+
+
+                }
 
 
 
