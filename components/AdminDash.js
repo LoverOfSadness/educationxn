@@ -175,6 +175,10 @@ export default () => {
 
                     <FaAngleRight className="text-white"/><a className="text-white"
                                                                              href={"/admin/revX"}>Mqanage Review</a>
+                </p><p className={(current=="/admin/apqfile"?"bg-info p-2":"px-2")}>
+
+                    <FaAngleRight className="text-white"/><a className="text-white"
+                                                                             href={"/admin/apqfile"}>Mqanage FAQ</a>
                 </p>
 
                 

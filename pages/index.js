@@ -172,7 +172,7 @@ export default function Home() {
     <div className="position-relative bg-black ">
 
         <img src={rtx.cdn+"/"+u.thumb} alt={rtx.cdn+"/"+JSON.stringify(u)} className="p-4" style={{
-            width: "400px",
+            width: "350px",
 
             height: "400px",
 
