@@ -2,13 +2,15 @@ import {FaAngleRight} from "react-icons/fa6";
 import styles from "./AdminDash.module.css"
 import React, {useEffect, useState} from "react";
 import {useRouter} from "next/router";
-import {FaSignOutAlt} from "react-icons/fa";
+import {FaArrowLeft, FaSignOutAlt, FaTimes} from "react-icons/fa";
 
 export default () => {
 
     const router = useRouter()
     const [current, setCurrent] = useState(router.pathname);
     const [user, setusr] = useState(null);
+    const [tog, setlog] = useState(false);
+
     useEffect ( () => {
         setCurrent(router.pathname)
 
@@ -37,7 +39,7 @@ export default () => {
 
             {user?<>
 
-                <div className={`d-flex  flex-column w-25 mx-3 vh-100 ${styles.error} ` }
+                <div className={`d-flex  flex-column ddd w-25 ` }
                      style={{backgroundColor: "#013571", color: "white"}}>
 
                     <div className="fw-bold w-100 p-2 "
@@ -59,7 +61,7 @@ export default () => {
                                     <div key={index}>
 
 
-                                        <p className={(current==value?"bg-info p-2":"px-2")} ><FaAngleRight className="text-white"/><a href={value} className="text-white"> {key}</a></p>
+                                        <p className={(current===value?"bg-info p-2":"px-2")} ><FaAngleRight className="text-white"/><a href={value} className="text-white"> {key}</a></p>
 
                                     </div>
                                 );
@@ -88,18 +90,16 @@ export default () => {
 
 
 
-            </>:<>
+            </>:<div className="d-flex">
 
-            <div className={`d-flex  flex-column w-25 mx-3 vh-100 ${styles.error} ` }
-                 style={{backgroundColor: "#013571", color: "white"}}>
 
-                <div className="fw-bold w-100 p-2 h4"
-                     style={{background: 'linear-gradient(to right, #e4b845, #f8e685)'}}> Admin Panel
+                <div className={`d-flex  flex-column ${tog ? "d-none":""}`} style={{backgroundColor:"#000",color:"white",width:"300px"}}>
+
+                <h4 className="fw-bold w-100 p-3 "
+                     style={{background: '#f7a21a'}}> Admin Panel
                     <br/>
-                    <h5>
-                        {styles.error}
-                    </h5>
-                </div>
+
+                </h4>
                 <div className="tx">
 
 
@@ -109,10 +109,8 @@ export default () => {
 
                 <p className={(current=="/admin/grade"?"bg-info p-2":"px-2")} ><FaAngleRight className="text-white"/><a href={"/admin/grade"}
                                                                                                                            className="text-white"> Give Grades</a></p>
-                <p className={(current=="/admin/assignment"?"bg-info p-2":"px-2")}><FaAngleRight className="text-white "/><a href={"/admin/assignment"}
-                                                                             className="text-white "> Give Assignment</a>
-                </p>
-                <p className="px-2"><FaAngleRight className="text-white" /><a href={"/admin/facX"} className="text-white"> Manage Faculty</a></p>
+
+                <p className={(current=="/admin/facX"?"bg-info p-2":"px-2")}><FaAngleRight className="text-white" /><a href={"/admin/facX"} className="text-white"> Manage Faculty</a></p>
                 <p className={(current=="/admin/coursemat"?"bg-info p-2":"px-2")}><FaAngleRight className="text-white"/><a href={"/admin/coursemat"}
                                                                              className="text-white"> Manage Course
                     Material</a></p>
@@ -147,13 +145,13 @@ export default () => {
                                                                              href={"/admin/Mqs"}>Manage Test</a>
                 </p>
 
-                <p className={(current=="/admin/store"?"bg-info p-2":"px-2")}>
+                <p className={(current==="/admin/store"?"bg-info p-2":"px-2")}>
 
                     <FaAngleRight className="text-white"/><a className="text-white"
                                                                              href={"/admin/store"}>Manage Courses</a>
                 </p>
 
-                <p className={(current=="/admin/exstore"?"bg-info p-2":"px-2")}>
+                <p className={(current==="/admin/exstore"?"bg-info p-2":"px-2")}>
 
                     <FaAngleRight className="text-white"/><a className="text-white"
                                                                              href={"/admin/exstore"}>Manage Store</a>
@@ -164,19 +162,46 @@ export default () => {
                     <FaAngleRight className="text-white"/><a className="text-white"
                                                                              href={"/admin/thr"}>Manage Teacher</a>
                 </p>
-                
+                 <p className={(current=="/admin/blog"?"bg-info p-2":"px-2")}>
+
+                    <FaAngleRight className="text-white"/><a className="text-white"
+                                                                             href={"/admin/blog"}>Manage Blog</a>
+                </p>
+                    <p className={(current=="/admin/cms"?"bg-info p-2":"px-2")}>
+
+                    <FaAngleRight className="text-white"/><a className="text-white"
+                                                                             href={"/admin/cms"}>Edit Pages</a>
+                </p><p className={(current=="/admin/revX"?"bg-info p-2":"px-2")}>
+
+                    <FaAngleRight className="text-white"/><a className="text-white"
+                                                                             href={"/admin/revX"}>Mqanage Review</a>
+                </p>
+
                 
                 {/*<p className="px-2"><FaAngleRight className="text-white" /> <a className="text-white" href={"faq"}>FAQ</a> </p>*/}
 
 
             </div>
 
+                <div className={`h3 text-white mt-2 ${tog?"":"me-3"}`} style={{marginLeft:tog?"0px":"-40px"}} onClick={o=>{
+                    //
+                    // let y=    document.getElementById("sid")
+                    //
+                    //     console.log(y)
+                    //
+                    //     y.classList.toggle("d-none")
+                    setlog(!tog)
+
+                }}>
+
+                    <div className={tog?"position-absolute  ms-2":"position-relative ms-2"} style={{zIndex:"123"}}>{tog?<FaTimes/>:<FaArrowLeft />}</div></div>
 
 
-            <div style={{height: "600px"}}></div>
-                </>
+                </div>
 
 }
+
+
         </>
 
 

@@ -163,15 +163,20 @@ if (s!== "Not Assign") {
         <div className="d-flex">
 
             <AdminDash/>
-            <div className="container">
+            <div className="d-flex w-100 justify-content-center   text-center overflow-x-hidden"  >
+
+                <div className="w-100">
+
+                    <h4 className="fw-bold w-100 py-3 text-center"
+                        style={{backgroundColor: "#f7a21a", color: "white"}}>Give Grade</h4>
 
 
-                <h4>Manage Group</h4>
-                <div className=" p-4 rounded border">
-                    <div className="d-flex justify-content-between"
-                    >
 
-                        <select className="form-control mx-4" onChange={event => {
+                <div className="p-lg-4  border">
+
+                    <div className="row justify-content-around">
+<div className="col-6">
+                        <select className="form-control " onChange={event => {
 
 
 
@@ -188,8 +193,9 @@ if (s!== "Not Assign") {
                             }
 
                         </select>
+</div><div className="col-6">
 
-                        <select className="form-control " onChange={event => {
+                        <select className="form-control col-5" onChange={event => {
 
 
 sqq(event.target.value)
@@ -206,7 +212,7 @@ sqq(event.target.value)
 
                         </select>
 
-
+                    </div>
 
                     </div>
 
@@ -219,7 +225,7 @@ sqq(event.target.value)
 
 
                     {
-                        sq===null?<></>:<table className="table table-bordered text-white text-center mt-5 ite" style= {{backgroundColor:"#013571"}}>
+                        sq===null?<></>: <div className="table-responsive"> <table className="table table-bordered mt-lg-5 mt-3 " style= {{backgroundColor:"#013571"}}>
                         <thead >
                         <tr className="bg-danger">
                             <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Student Name</th>
@@ -233,7 +239,7 @@ sqq(event.target.value)
                         {
                             getudat.map(value => {
 
-                                return <tr className="bg-danger">
+                                return <tr className="">
                                     <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.name}</td>
                                     <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.email}</td>
                                     <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.phone}</td>
@@ -338,15 +344,24 @@ sqq(event.target.value)
 
 
                         </tbody>
-                    </table>}
+                        </table></div>}
+
 
 
 
                 </div>
 
+
+            </div>
+
+
+
+
             </div>
 
         </div>
+
+
 
 
     </>

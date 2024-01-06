@@ -3,7 +3,7 @@ import Swal, {isLoading} from "sweetalert2";
 import {Button, Modal} from "react-bootstrap";
 
 import axios from "axios";
-import {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import dynamic from "next/dynamic";
 import {rtx} from "@/lib/Rh";
 import {Field, Form, Formik} from "formik";
@@ -62,6 +62,19 @@ export default ()=>{
     const [editX,seteditX]=useState({})
 
     return <>
+        <div className="position-fixed end-0 btn bottom-0 m-3 m-lg-5 justify-content-center shadow rounded-circle text-center d-flex align-items-center border  border-4" style={{width:"60px",height:"60px",backgroundColor:"#f7a21a"}} onClick={u=>{
+
+
+            seteditX({})
+            showModal()
+
+
+
+        }}>
+
+
+            <div className="h1 fw-bold text-white">+</div>
+        </div>
 
         <Modal show={isOpen} onHide={hideModal} fullscreen={true} >
             <Modal.Header style={{backgroundColor:"#013571",color:"white"}}>
@@ -183,18 +196,20 @@ export default ()=>{
         </Modal>
         <div className="d-flex">
             <AdminDash/>
-            <div className="container mt-3">
+            <div className="w-100">
 
 
-                <div className="d-flex justify-content-between py-3 mb-2  container w-100 rounded-3" style={{backgroundColor:"#013571",color:"white"}}>
-                    <h3 >Manage store Information  </h3>
+                <div className="d-flex justify-content-between   w-100 rounded-3">
 
-                    <div className="btn btn-primary" onClick={(i)=>{
-                        seteditX({})
-                        showModal()
-                    }}>Add New </div>
+
+                    <h4 className="fw-bold w-100 py-3 text-center"
+                        style={{backgroundColor: "#f7a21a", color: "white"}}>Manage store Information </h4>
+
+
+
+
                 </div>
-                <div className="card " style={{backgroundColor:"#013571"}}>
+                <div className="card bg-transparent" >
 
                     <div className="card-body ">
 

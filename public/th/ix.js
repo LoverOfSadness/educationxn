@@ -15,19 +15,31 @@ const nodemailer = require('nodemailer');
 //   },
 // });
 
-var transporter = nodemailer.createTransport(({
-  service: 'gmail',
-  host: 'smtp.gmail.com',
-  auth: {
-    user: 'admin@hotelmotelclub.com',
-    pass: 'qcmbdjniezwqnizm'
-  }
-}));
 
-// Email data
+//
+// var transporter = nodemailer.createTransport(({
+//   service: 'gmail',
+//   host: 'smtpout.secureserver.net',
+//   auth: {
+//     user: 'admin@hotelmotelclub.com',
+//     pass: 'qcmbdjniezwqnizm'
+//   }
+// }));
+
+const transporter = nodemailer.createTransport({
+  host: 'smtpout.secureserver.net',
+  port: 465,
+  secure: true,
+  auth: {
+    user: 'no-reply@atsdhst.com',
+    pass: 'aA@1234567890'
+  }
+});
+
+
 const mailOptions = {
-  from: 'admin@hotelmotelclub.com', // Use your custom domain email address
-  to: 'admin@hotelmotelclub.com',
+  from: 'no-reply@atsdhst.com',
+  to: 'rajuhaldarx@gmail.com',
   subject: 'Subject of the email',
   text: 'Text content of the email',
 };

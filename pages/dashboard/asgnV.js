@@ -97,7 +97,7 @@ export default ()=>{
         descrtx=""+rtzg
 
     }
-    return  <div className="bg-white">
+    return  <div className="">
 
 
 
@@ -166,15 +166,17 @@ export default ()=>{
 
         <div className="d-flex">
             <STDash/>
-            <div className="d-flex w-100 justify-content-center container text-center" style={{backgroundColor:"#cbcbcb"}}>
+            <div className="d-flex w-100 justify-content-center  text-center text-white overflow-x-hidden" >
 
                 <div className="w-100">
 
-                    <h3 className="p-3 rounded w-100 mt-3" style={{backgroundColor:"#013571",color:"white"}}> New Assignment </h3>
+
+                    <h4 className="fw-bold w-100 py-3 text-center"
+                        style={{backgroundColor: "#f7a21a", color: "white"}}>New Assignment </h4>
 
 
-                    {xdat.length>0?<div className="p-4 bg-white w-100">
-                        <li className="list-group-item mb-4">
+                    {xdat.length>0?<div className="p-4 w-100 border rounded">
+                        <li className="list-group-item mb-4 ">
 
 
                                 <span className="float-start">
@@ -182,7 +184,7 @@ export default ()=>{
                                 </span>
                             <div className="float-end ">
 
-                                <button className="btn btn-primary btn-sm me-3 " onClick={()=>{
+                                <button className="btn btn-primary  me-3 " onClick={()=>{
 
 
                                     setmdata(xdat[0])
@@ -202,21 +204,21 @@ export default ()=>{
 
 
 
-                    {xdat.length>1? <h4 className="p-2 rounded w-100 mt-3" style={{backgroundColor:"#013571",color:"white"}}> Old Assignment </h4>:""}
+                    {xdat.length>1? <h4 className="p-2 rounded w-100 mt-3 btn-primary " > Old Assignment </h4>:""}
 
 
                         <ul className="list-group mb-5 mt-2 ">
                         {xdat.map((item,inp) => (
 
-                            inp!=0?<li key={item._id} className="list-group-item ">
+                            inp!==0?<li key={item._id} className="list-group-item bg-black ">
 
 
-                                <span className="float-start">
+                                <span className="float-start text-white">
                                 {item.title}
                                 </span>
                                 <div className="float-end ">
 
-                                    <button className="btn btn-primary btn-sm me-3 " onClick={()=>{
+                                    <button className="btn btn-primary  me-3 " onClick={()=>{
 
 
                                         setmdata(item)

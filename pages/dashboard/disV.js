@@ -143,20 +143,20 @@ useEffect(()=>{
 
             <div className="d-flex" >
                 <STDash/>
-        <div className="vh-100 " style={{width:"75%",backgroundColor:"lightgray"}}>
+        <div className="vh-100" style={{width:"100%",backgroundColor:"lightgray"}}>
             <div className=" overflow-y-auto " id="wers" style={{height:"92%",}}>
                 { getmsg.map((Chatx,u)=>{
 
-return <div key={u}>   <div  className={`w-75 d-flex mb-2 ${Chatx.name==usr.name?"float-end":""}` } style={{transform:`${Chatx.name==usr.name?"scaleX(-1)":""}`}}>
+return <div key={u}>   <div className={`w-75 d-flex mb-2 ${Chatx.name===usr.name?"float-end":""}` } style={{transform:`${Chatx.name===usr.name?"scaleX(-1)":""}`}}>
 
                         <img src={rtx.cdn+"/"+Chatx.dp} className="m-2 rounded-circle" width={50} height={50}/>
-                        <div className="mt-1  px-4 p-2 shadow bg-white   w-75 ms-2 rounded-3 " style=  {{transform: `${Chatx.name==usr.name?"scaleX(-1)":""}`}}>
+                        <div className="mt-1  px-4 p-2 shadow bg-white text-black  w-75 ms-2 rounded-3 " style=  {{transform: `${Chatx.name===usr.name?"scaleX(-1)":""}`}}>
                             <div className="d-flex  justify-content-between fw-bold text-primary " style={{marginBottom:-15}} >
                                 <p className="">{Chatx.name} {Chatx.d}</p>
                                 <p  className="">{Chatx.t?Chatx.t:"Student"}</p>
                             </div >
 
-                            {Chatx.ix? Chatx.ix.toLowerCase().includes(".jpg") ||  Chatx.ix.toLowerCase().includes(".png") ||  Chatx.ix.toLowerCase().includes(".jpeg") ||  Chatx.ix.toLowerCase().includes(".webp")? <img width={300} height={300} src={rtx.cdn+"/"+Chatx.ix} alt="dd" />:<a href={rtx.cdn+"/"+Chatx.ix} className="btn-primary btn">{Chatx.ix}</a>:Chatx.m }
+                            {Chatx.ix? Chatx.ix.toLowerCase().includes(".jpg") ||  Chatx.ix.toLowerCase().includes(".png") ||  Chatx.ix.toLowerCase().includes(".jpeg") ||  Chatx.ix.toLowerCase().includes(".webp")? <img className="" width={200} height={200} src={rtx.cdn+"/"+Chatx.ix} alt="dd" />:<a href={rtx.cdn+"/"+Chatx.ix} className="btn-primary btn">{Chatx.ix}</a>:Chatx.m }
 
                         </div>
 
@@ -172,7 +172,7 @@ return <div key={u}>   <div  className={`w-75 d-flex mb-2 ${Chatx.name==usr.name
 
             </div>
 
-            <div style={{height:"8%",backgroundColor:"#013571"}} className="d-flex align-items-center text-center" >
+            <div style={{height:"80px",backgroundColor:"#013571"}} className="d-flex align-items-center text-center bottom-0" >
 
                 <div className="h1 px-3 text-white" onClick={e=>{
 

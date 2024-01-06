@@ -38,8 +38,8 @@ export default function Store() {
     return  <><HeadderX/>
         <StoreX/>
 
-<div className="" style={{backgroundColor:"#013571"}}>
-        <div className="container mt-3">
+<div className="" style={{backgroundColor:"white"}}>
+        <div className="container bg-white ">
 
 
             {/*<div className="d-flex justify-content-between py-3 mb-2  container w-100 rounded-3" style={{backgroundColor:"#013571",color:"white"}}>*/}
@@ -52,7 +52,7 @@ export default function Store() {
             {/*</div>*/}
             <div className=" ">
 
-                <div className="card-body " style={{backgroundColor:"#013571"}}>
+                <div className="card-body  py-5" style={{backgroundColor:"white"}}>
 
                     <div className="row">
 
@@ -60,16 +60,16 @@ export default function Store() {
                         {xdat.map((tp,n)=>{
                             return <div className="col-12 col-lg-3 mt-3" key={n}>
 
-                                <div className="card" >
+                                <div className="card text-white bg-black"  >
 
-                                    <img src={rtx.cdn+"/"+tp.thumb} alt="" className="p-3 align-self-center" style={{maxHeight:"300px",maxWidth:"250px"}}/>
+                                    <img src={rtx.cdn+"/"+tp.thumb} alt="" className="p-3 align-self-center mt-4" style={{maxHeight:"300px",maxWidth:"250px"}}/>
                                     <div className="card-body">
                                         <div className="card-text text-center h2">
                                             {tp.name}
                                         </div>
                                         <div className="d-flex justify-content-between align-items-center">
                                             <div className="h5 ps-3 text-success">$ {tp.price}</div>
-                                            <div className="btn btn-outline-primary text-center" onClick={()=> {
+                                            <div className="btn btn-primary text-center" onClick={()=> {
 
 window.location.href="/courses/"+tp._id
 

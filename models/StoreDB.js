@@ -21,7 +21,12 @@ const FacultyDBSchema = new mongoose.Schema(
         dis: {
             type: String,
 
-        }, vdo: {
+        },
+        vdo: {
+            type: String,
+
+        },
+        star: {
             type: String,
 
         },

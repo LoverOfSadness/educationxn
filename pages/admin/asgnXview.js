@@ -35,7 +35,7 @@ export default ()=>{
 
 
 
-    return  <div className="bg-white">
+    return  <div className="bg-dark">
 
         <HeadderX/>
 

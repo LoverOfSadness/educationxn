@@ -12,15 +12,10 @@ export const config = {
 export default async function handler(req, res) {
     const { method } = req;
 
-    
-
     const upload = multer({
         storage: multer.diskStorage({
             destination: "public/uploads",
             filename: function (req, file, cb) {
-                // let extArray = file.mimetype.split("/");
-                // let extension = extArray[extArray.length - 1];
-                // cb(null, file.fieldname + "-" + Date.now() + "." + extension);
                 cb(null, ""+ Date.now() + path.extname(file.originalname))
             },
         }),

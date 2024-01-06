@@ -26,12 +26,7 @@ export default () => {
 
         axios.get("/api/admin/meet").then(value => {
 
-
-
             setudat(value.data);
-
-
-
 
         })
 
@@ -60,9 +55,13 @@ export default () => {
 
             <AdminDash/>
 
-            <div className="container">
+            <div className="w-100">
 
-                <div className="mt-5 me-4 border p-5">
+                <h4 className="fw-bold w-100 py-3 text-center"
+                    style={{backgroundColor: "#f7a21a", color: "white"}}>New Announcement </h4>
+
+
+                <div className="me-4 pt-3 border">
                     <Formik initialValues={{}} onSubmit={y => {
 
 
@@ -85,7 +84,7 @@ export default () => {
 
                         <Form>
                         <Field type="text" name="sub" id="" placeholder={"Subject"}  className="form-control " />
-                        <Field type="text" name="duration" id="" placeholder={"Duration"}  className="form-control " />
+                        <Field type="text" name="duration" id="" placeholder={"Duration"}  className="form-control mt-1" />
                         <Field as={"select"} className="form-control mt-1" name="group">
                             <option>Select Classroom</option>
                             {getxdat.map(valu => {
@@ -96,6 +95,7 @@ export default () => {
                             }
 
                         </Field>
+
                          <DatePicker className="form-control col-6 mt-1" selected={startDate}
                                     onChange={(date) => setStartDate(date)} showTimeSelect
                                     dateFormat="dd-MM-yyyy h:mm aa"/>
@@ -109,9 +109,10 @@ export default () => {
                     </Formik>
                 </div>
 
-                <div className="border mt-5 me-4 p-5 pt-2">
-<div className="h3 text-center">All Meetings</div>
+                <div className="border  me-4 p-lg-5 pt-2">
+<div className="h3 text-center ">All Meetings</div>
 
+                    <div className="table-responsive">
                     <table className="table table-bordered text-white text-center " style= {{backgroundColor:"#013571"}}>
                         <thead >
                         <tr className="">
@@ -131,6 +132,7 @@ export default () => {
                                     <td className="text-white"
                                         style={{backgroundColor: "#013571"}}>
                                         {value.sub}
+
                                     </td>   <td className="text-white"
                                         style={{backgroundColor: "#013571"}}>
                                     {value.duration}
@@ -142,7 +144,6 @@ export default () => {
                                     { (new Date(value.time) ).toLocaleDateString('en-IN',optionsx) }
                                     </td>    <td className="text-white"
                                         style={{backgroundColor: "#013571"}}>
-
 
                                     <div className="btn btn-primary  me-2" onClick={i=>{
 
@@ -157,10 +158,7 @@ export default () => {
 
                                                         loaddata()
 
-
                                                     })
-
-
                                                 })
 
 
@@ -172,8 +170,9 @@ export default () => {
                             })
                         }
 
-                                        </tbody>
+ </tbody>
                     </table>
+                    </div>
                 </div>
             </div>
         </div>

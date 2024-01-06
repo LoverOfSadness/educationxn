@@ -9,6 +9,7 @@ import dynamic from "next/dynamic";
 import AdminDash from "@/components/AdminDash";
 import UploadX from "@/components/UploadX";
 import {rtx} from "@/lib/Rh";
+import Headerx from "@/components/headerx";
 
 export default ()=>{
     const  [getudat,setudat]=useState([])
@@ -59,6 +60,17 @@ export default ()=>{
     return<>
 
 
+
+        <div className="position-fixed end-0 bottom-0 m-3 m-lg-5 justify-content-center shadow rounded-circle text-center d-flex align-items-center border  border-4" style={{width:"60px",height:"60px",backgroundColor:"#f7a21a"}} onClick={u=>{
+
+            setIsOpen(true)
+        }}>
+
+
+            <div className="h1 fw-bold">+</div>
+        </div>
+
+<Headerx/>
 
         <div className="d-flex">
 
@@ -169,26 +181,31 @@ export default ()=>{
 
 
 
-            <div className="container-fluid py-3 bg-white rounded">
+            <div className="w-100">
 
 
-                <div className="container  text-center">
 
 
-                    <div className="btn btn-primary float-end my-2" onClick={u=>{
-
-                        setIsOpen(true)
-                    }}>Add</div>
+                <h4 className="fw-bold w-100 py-3 text-center"
+                    style={{backgroundColor: "#f7a21a", color: "white"}}>Manage Faculty </h4>
 
 
-                    <table className="table table-bordered table-striped table-light">
+
+
+                <div className="text-center table-responsive">
+
+
+
+
+
+                    <table className="table table-bordered table-light text-white">
                         <thead>
-                        <tr>
-                            <th scope="col">Images</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Position</th>
-                            <th scope="col">Classroom</th>
-                            <th scope="col">Action</th>
+                        <tr className="text-white">
+                            <th scope="col" className="text-white" style= {{backgroundColor:"#e4b845"}}>Images</th>
+                            <th scope="col"  className="text-white"  style= {{backgroundColor:"#e4b845"}}>Name</th>
+                            <th scope="col" className="text-white"  style= {{backgroundColor:"#e4b845"}}>Position</th>
+                            <th scope="col"  className="text-white" style= {{backgroundColor:"#e4b845"}}>Classroom</th>
+                            <th scope="col"  className="text-white" style= {{backgroundColor:"#e4b845"}}>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -199,11 +216,11 @@ export default ()=>{
 
 
                             return <tr key={ind}>
-                                <td><img src={rtx.cdn+"/"+ et.dp} width={60} height={60} alt=""/></td>
-                                <td className=" pt-4">{et.name}</td>
-                                <td className=" pt-4" >{et.position}</td>
-                                <td className=" pt-4">{et.grp}</td>
-                                <td className="" onClick={r=>{
+                                <td className="text-white"  style={{backgroundColor: "#013571"}}><img src={rtx.cdn+"/"+ et.dp} width={60} height={60} alt=""/></td>
+                                <td style={{backgroundColor: "#013571"}} className="text-white pt-4">{et.name}</td>
+                                <td style={{backgroundColor: "#013571"}} className="text-white pt-4" >{et.position}</td>
+                                <td style={{backgroundColor: "#013571"}} className="text-white pt-4">{et.grp}</td>
+                                <td style={{backgroundColor: "#013571"}} className="text-white" onClick={r=>{
 
                                     axios.delete("/api/admin/fac?id="+et._id).then(o=>{
 

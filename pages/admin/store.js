@@ -3,7 +3,7 @@ import Swal, {isLoading} from "sweetalert2";
 import {Button, Modal} from "react-bootstrap";
 
 import axios from "axios";
-import {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import dynamic from "next/dynamic";
 import {rtx} from "@/lib/Rh";
 import {Field, Form, Formik} from "formik";
@@ -21,6 +21,8 @@ export default ()=>{
         descrtx=""+rtzg
 
     }
+    const [Editor, seteditor] = useState(null);
+
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -50,6 +52,7 @@ export default ()=>{
     useEffect(()=>{
 
 
+        seteditor(dynamic(() => import("@/components/Editor/index")))
 
 
    loaddata();
@@ -62,6 +65,25 @@ const [getk,setk]=useState("")
 const [editX,seteditX]=useState({})
 
     return <>
+
+
+
+
+        <div className="position-fixed end-0 btn bottom-0 m-3 m-lg-5 justify-content-center shadow rounded-circle text-center d-flex align-items-center border  border-4" style={{width:"60px",height:"60px",backgroundColor:"#f7a21a"}} onClick={u=>{
+
+
+            seteditX({})
+            showModal()
+
+
+
+        }}>
+
+
+            <div className="h1 fw-bold text-white">+</div>
+        </div>
+
+
 
         <Modal show={isOpen} onHide={hideModal} fullscreen={true} >
             <Modal.Header style={{backgroundColor:"#013571",color:"white"}}>
@@ -96,6 +118,7 @@ const [editX,seteditX]=useState({})
                                 preConfirm:  () => {
                                     hideModal()
                                     e.thumb=getk;
+                                    e.dis=descrtx
                                     let url=""
                                     if (editX._id) {
                                         url = "/api/admin/store?id="+editX._id
@@ -135,11 +158,12 @@ const [editX,seteditX]=useState({})
                         <Field className="form-control" type="text" name="price" id="price" placeholder={"Price..."}/>
                         <p className="fw-bold mt-2">Item INFO</p>
                         <Field className="form-control" type="text" name="bnr" id="bnr" placeholder={"short Des..."}/>
-<p className="fw-bold mt-2">Item Video</p>
-                        <Field className="form-control" type="text" name="vdo" id="vdo" placeholder={"https://www.youtube.com/watch?v=aqz-KE-bpKQ"}/>
+{/*<p className="fw-bold mt-2">Item Video</p>*/}
+{/*                        <Field className="form-control" type="text" name="vdo" id="vdo" placeholder={"https://www.youtube.com/watch?v=aqz-KE-bpKQ"}/>*/}
 
                         <p className="fw-bold mt-2 ">Item Description</p>
-                        <Field className="form-control my-2" as="textarea" name="dis" id="dis" placeholder={"short Des..."}/>
+                        {/*<Field type="hidden" className="form-control my-2" as="textarea" name="dis" id="dis" placeholder={"short Des..."}/>*/}
+                        {Editor? <Editor form={setvalueofdes} ></Editor>:""}
 
                         <Button className="form-control" type="submit" name="" id="" >Add</Button>
                     </Form>
@@ -179,18 +203,18 @@ const [editX,seteditX]=useState({})
         </Modal>
         <div className="d-flex">
         <AdminDash/>
-<div className="container mt-3">
 
 
-    <div className="d-flex justify-content-between py-3 mb-2  container w-100 rounded-3" style={{backgroundColor:"#013571",color:"white"}}>
-    <h3 >Manage store Information  </h3>
+<div className="w-100">
+    <div className="d-flex justify-content-between w-100 " >
 
-        <div className="btn btn-primary" onClick={(i)=>{
-            seteditX({})
-            showModal()
-        }}>Add New </div>
+        <h4 className="fw-bold w-100 py-3 text-center"
+            style={{backgroundColor: "#f7a21a", color: "white"}}>Manage store Information </h4>
+
+
+
     </div>
-    <div className="card " style={{backgroundColor:"#013571"}}>
+    <div className="card bg-transparent" >
 
         <div className="card-body ">
 
@@ -212,14 +236,21 @@ const [editX,seteditX]=useState({})
 <div className="btn btn-outline-danger text-center" onClick={()=> {
 
     Swal.fire(
-        {
-            icon:"warning",
+
+
+    {
+
+        icon:"warning",
             showDenyButton:true,
             denyButtonText:"Delete",
             confirmButtonText:"Edit",
             title: "Delete",
             showCancelButton:true
         }
+
+
+
+
     ).then((i)=>{
 
 

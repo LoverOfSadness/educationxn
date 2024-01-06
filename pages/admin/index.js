@@ -13,7 +13,10 @@ export default ()=>{
      <div className="d-flex" >
 
         <AdminDash/>
-        <div className="w-100 h-100 bg-black">dhhhfhfjhhj</div>
+        {/*<div className="w-100 h-100 bg-black">dhhhfhfjhhj</div>*/}
 
-    </div> </>
+    </div>
+    <Futter/>
+
+    </>
 }

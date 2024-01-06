@@ -6,13 +6,16 @@ import axios from "axios";
 import {FaEnvelope, FaKey, FaTrash} from "react-icons/fa";
 import dynamic from "next/dynamic";
 import AdminDash from "@/components/AdminDash";
+import {FaPencil} from "react-icons/fa6";
 
 export default ()=>{
     const  [getudat,setudat]=useState([])
     const  [isOpen,setIsOpen]=useState(false)
     const  [isOpenE,setIsOpenE]=useState(false)
 
-    const [xtxcc,xxxtt] = useState("");
+    const [xtxcc,xxxtt] = useState({});
+
+
     const cdata=useRef("")
 
     const [Editor,seteditor] = useState(null);
@@ -51,68 +54,25 @@ export default ()=>{
 
 
 
+
+
     return<>
 
+
+        <div className="position-fixed end-0 bottom-0 m-3 m-lg-5 justify-content-center shadow rounded-circle text-center d-flex align-items-center border  border-4" style={{width:"60px",height:"60px",backgroundColor:"#f7a21a"}} onClick={u=>{
+
+            setIsOpen(true)
+        }}>
+
+
+            <div className="h1 fw-bold">+</div>
+        </div>
 
 
         <div className="d-flex">
 
             <AdminDash/>
 
-
-
-            <Modal show={isOpenE} onHide={()=>{setIsOpenE(false)}} fullscreen={true} >
-                <Modal.Header>
-                    <div className="w-100 h3"><div className="text-center">Sending Message To {xtxcc} </div>
-                    </div>
-                    <button onClick={event => {setIsOpenE(false)}} className="bg-transparent border-0 h1 m-0">&times;</button>
-                </Modal.Header>
-                <Modal.Body style={{backgroundColor:"lightgray"}}>
-
-                    <input className="form-control py-3 h1"  id="coursex" placeholder="Subject ......"/>
-
-                    {Editor?
-                        <Editor form={setvalueofdes} hi={600}/>
-                        :""}
-
-
-                    <h3 className="p-3 rounded w-100 mt-3 fixed-bottom text-center btn" style={{backgroundColor:"#013571",color:"white"}} onClick={(e)=>{
-
-
-                        Swal.fire({
-                            title: `Do you want to Send mail payment status for ${xtxcc}`,
-                            icon: "question",
-                            showLoaderOnConfirm: true,
-                            showCancelButton: true,
-                            preConfirm() {
-
-
-                                axios.post("/api/sales", {
-
-                                        ue: xtxcc,
-                                        sub: document.getElementById("coursex").value,
-                                        text: cdata.current
-
-                                    }
-                                ).then(() => {
-
-                                    setIsOpenE(false)
-
-                                    Swal.fire("Mail Sent","Your Email Hash been sent ","success")
-
-
-                                })
-
-                            }
-                        })
-
-
-                    }}> Send Message </h3>
-
-                </Modal.Body>
-
-
-            </Modal>
 
 
             <Modal show={isOpen} onHide={(i)=>{setIsOpen(false)}} fullscreen={false}  centered={true} onEscapeKeyDown={ip=>{ip.preventDefault()}}>
@@ -128,32 +88,41 @@ export default ()=>{
                     }}>
 
 
-                        <input type="text"  name="name" className="form-control mt-1 rtx" placeholder="Name"/>
-                        <input type="text"  name="email" className="form-control mt-1 rtx" placeholder="Email"/>
+                        <input type="text"  name="name" className="form-control mt-1 rtx" placeholder="Name" defaultValue={xtxcc?.name}/>
+                        <input type="text"  name="email" className="form-control mt-1 rtx" placeholder="Email"  defaultValue={xtxcc?.email}/>
 
 
 
 <div className="text-white  border rounded p-3">
 
 
-    <input type="checkbox" name="Give Grades" value="/admin/grade" style={{transform:"scale(2)"}} className="mx-3"/>Give Grades
-    <br/><input type="checkbox" name="Give Assignment" value="/admin/assignment" style={{transform:"scale(2)"}} className="mx-3"/>Give Assignment
-    <br/><input type="checkbox" name="Manage Course" value="/admin/coursemat" style={{transform:"scale(2)"}} className="mx-3"/>Manage Course
+    <input type="checkbox" name="Give Grades" value="/admin/grade" style={{transform:"scale(2)"}} className="mx-3" />Give Grades<br/>
+    <input type="checkbox" name="Check Reviews" value="/admin/revX" style={{transform:"scale(2)"}} className="mx-3" />Check Reviews<br/>
+    <input type="checkbox" name="Write Blog" value="/admin/blog" style={{transform:"scale(2)"}} className="mx-3" />Write Blog<br/>
+
+
+
+    <input type="checkbox" name="Manage Course" value="/admin/coursemat" style={{transform:"scale(2)"}} className="mx-3"/>Manage Course Material
     <br/><input type="checkbox" name="Manage Announcements" value="/admin/assX" style={{transform:"scale(2)"}} className="mx-3"/>Manage Announcements
     <br/><input type="checkbox" name="Manage Assignment" value="/admin/asgnX" style={{transform:"scale(2)"}} className="mx-3"/>Manage Assignment
     <br/><input type="checkbox" name="Manage Course Information" value="/admin/CinfoX" style={{transform:"scale(2)"}} className="mx-3"/>Manage Course Information
     <br/><input type="checkbox" name="Manage Notification" value="/admin/NotiX" style={{transform:"scale(2)"}} className="mx-3"/>Manage Notification
-    <br/><input type="checkbox" name="Manage User" value="/admin/stdX" style={{transform:"scale(2)"}} className="mx-3"/>Manage User
+    <br/><input type="checkbox" name="Manage User" value="/admin/stdX" style={{transform:"scale(2)"}} className="mx-3"/>Manage Students
     <br/><input type="checkbox" name="Manage Test" value="/admin/Mqs" style={{transform:"scale(2)"}} className="mx-3"/>Manage Test
     <br/><input type="checkbox" name="Manage Faculty" value="/admin/facX" style={{transform:"scale(2)"}} className="mx-3"/>Manage Faculty
     <br/><input type="checkbox" name="Manage Teacher" value="/admin/thr" style={{transform:"scale(2)"}} className="mx-3"/>Manage Teacher
 
+    <br/><input type="checkbox" name="Manage Courses" value="/admin/store" style={{transform:"scale(2)"}} className="mx-3"/>Manage Courses
+    <br/><input type="checkbox" name="Manage Store" value="/admin/exstore" style={{transform:"scale(2)"}} className="mx-3"/>Manage Store
 
-    <br/><input type="checkbox" name="Manage Courses" value="/admin/store" style={{transform:"scale(2)"}} className="mx-3"/>Manage User
-    <br/><input type="checkbox" name="Manage User" value="/admin/stdX" style={{transform:"scale(2)"}} className="mx-3"/>Manage User
-    <br/><input type="checkbox" name="Manage User" value="/admin/stdX" style={{transform:"scale(2)"}} className="mx-3"/>Manage User
-    <br/><input type="checkbox" name="Manage Meeting" value="/admin/meet" style={{transform:"scale(2)"}} className="mx-3"/>Manage Meeting
-    <br/><input type="checkbox" name="Messages" value="/admin/disV" style={{transform:"scale(2)"}} className="mx-3"/>Messages
+    <br/>
+    <input type="checkbox" name="Manage Meeting" value="/admin/meet" style={{transform:"scale(2)"}} className="mx-3"/>Manage Class
+    <br/>
+
+    <input type="checkbox" name="Edit Pages" value="/admin/cms" style={{transform:"scale(2)"}} className="mx-3"/>Edit Pages
+    <br/>
+
+    <input type="checkbox" name="Discussion Area" value="/admin/disV" style={{transform:"scale(2)"}} className="mx-3"/>Discussion Area
 
 
 </div>
@@ -243,19 +212,15 @@ export default ()=>{
 
 
 
-            <div className="container-fluid py-3 bg-white rounded">
+            <div className="w-100 pb-3  rounded">
+
+                <h4 className="fw-bold w-100 py-3 text-center"
+                    style={{backgroundColor: "#f7a21a", color: "white"}}>New Teacher </h4>
 
 
-                <div className="container  text-center">
+                <div className="text-center">
 
-
-                    <div className="btn btn-primary float-end my-2" onClick={u=>{
-
-                        setIsOpen(true)
-                    }}>Add</div>
-
-
-                    <table className="table table-bordered table-striped table-light">
+                    <table className="table table-bordered table-striped table-light align-middle">
                         <thead>
                         <tr>
                             <th scope="col">Name</th>
@@ -271,7 +236,7 @@ export default ()=>{
 
 
 
-                            return <tr key={ind}>
+                            return <tr key={ind} className="">
                                 <td>{et.name}</td>
                                 <td><pre>{
 
@@ -290,7 +255,10 @@ export default ()=>{
 
                                 }</pre></td>
                                 <td>{et.email}</td>
-                                <td className=" " onClick={y=>{
+
+                                <td className="">
+
+                                <div className=" " onClick={y=>{
 
                                     axios.get("/api/sales?x=del&del="+et._id).then(y=>{
 
@@ -302,9 +270,40 @@ export default ()=>{
 
                                         <FaTrash/> Delete
                                     </div>
+                                </div>
+
+                                        <div className=" " onClick={y=>{
+
+                                            xxxtt(et)
+                                            setIsOpen(true)
+
+
+
+                                            let r= document.querySelectorAll(".rtx")
+
+                                            let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+                                            checkboxes.forEach(ty=>{
+
+
+                                            })
+
+
+                                }}>
+                                    <div className="btn btn-primary mt-2">
+
+<div className="px-2">  <FaPencil /> Edit</div>
+
+                                    </div>
+
+
+                                </div>
+
+
+
+
+
                                 </td>
-
-
                             </tr>
 
 

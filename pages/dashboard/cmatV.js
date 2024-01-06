@@ -32,14 +32,16 @@ export default function () {
     return <div>
 
 
-        <div className="bg-white">    <HeadderX/>
+        <div className="">    <HeadderX/>
 
             <div className="d-flex" >
                 <STDash/>
 
-                <div className="w-100  me-2" style={{backgroundColor:"lightgray"}}>
+                <div className="w-100 overflow-x-hidden" >
+                    <h4 className="fw-bold w-100 py-3 text-center"
+                        style={{backgroundColor: "#f7a21a", color: "white"}}>Downloads Course Materials</h4>
 
-                    <h3 className="p-3 rounded w-100" style={{backgroundColor:"#013571",color:"white"}}>Downloads Course Materials </h3>
+
 
                     <ul className="list-group m-5">
                         {xdat.map((item) => (

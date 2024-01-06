@@ -69,14 +69,21 @@ aaa.current=d;
 
     return <>
 
-
         <HeadderX/>
+
         <div className="d-flex">
-
             <STDash/>
+            <div className="d-flex w-100 justify-content-center  text-center text-white overflow-x-hidden" >
 
-        { getxdat.length>0?
-        <div className="container m-5 ms-0 pt-4 border">
+
+                <div className="w-100">
+
+                    <h4 className="fw-bold w-100 py-3 text-center"
+                        style={{backgroundColor: "#f7a21a", color: "white"}}>Test Session</h4>
+
+
+                    { getxdat.length>0?
+        <div className="me-lg-3 ms-0 pt-4 border">
             <h1 className="text-center">
                 Question Number {currentx.current+1} of {getxdat.length}  </h1>
 
@@ -214,6 +221,9 @@ window.location.reload()
 
 
         </div>:""}
+
+                </div>
+            </div>
         </div>
 
         <Futter/>

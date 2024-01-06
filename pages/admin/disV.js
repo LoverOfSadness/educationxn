@@ -107,7 +107,7 @@ export default function Home() {
 
 
 
-            const socket = new WebSocket("wss://66.23.231.118:8888/");
+            const socket = new WebSocket("wss://edu.codeyourbusiness.site:8888/");
 
 
 
@@ -160,12 +160,17 @@ export default function Home() {
 
             <div className="d-flex" >
                 <AdminDash/>
-                <div className="vh-100 " style={{width:"75%",backgroundColor:"lightgray"}}>
+
+
+                <div className="vh-100  w-100 " style={{width:"75%",backgroundColor:"lightgray"}}>
+
+                    <h4 className="fw-bold w-100 py-3 text-center"
+                        style={{backgroundColor: "#f7a21a", color: "white"}}>Discussion Room </h4>
 
 
                     <div className="w-100 bg-info text-center">
 
-                        <select className="form-control" onChange={event => {
+                        <select className="form-control rounded-0" onChange={event => {
 
                             setmsg([])
                           setusr(  event.target.value)
@@ -189,10 +194,10 @@ export default function Home() {
 
 
 
-                    <div className=" overflow-y-auto " id="wers" style={{height:"88%",}}>
+                    <div className=" overflow-y-auto " id="wers" style={{height:"80%",}}>
                         { getmsg.map((Chatx,u)=>{
 
-                            return <div key={u}>   <div  className={`w-75 d-flex mb-2 ${Chatx.name=="Admin"?"float-end":""}` } style={{transform:`${Chatx.name=="Admin"?"scaleX(-1)":""}`}}>
+                            return <div key={u}>   <div className={`w-75 d-flex mb-2 ${Chatx.name==="Admin"?"float-end":""}` } style={{transform:`${Chatx.name=="Admin"?"scaleX(-1)":""}`}}>
 
                                 <img src="/img/ellipse_3.png" className="m-2" width={50} height={50}/>
                                 <div className="mt-1  px-4 p-2 shadow bg-white   w-75 ms-2 rounded-3 " style=  {{transform: `${Chatx.name=="Admin"?"scaleX(-1)":""}`}}>
@@ -202,7 +207,8 @@ export default function Home() {
 
                                     </div >
 
-                                    {Chatx.ix? Chatx.ix.toLowerCase().includes(".jpg") ||  Chatx.ix.toLowerCase().includes(".png") ||  Chatx.ix.toLowerCase().includes(".jpeg") ||  Chatx.ix.toLowerCase().includes(".webp")? <img width={300} height={300} src={rtx.cdn+"/"+Chatx.ix} alt="dd" />:<a href={rtx.cdn+"/"+Chatx.ix} className="btn-primary btn">{Chatx.ix}</a>:Chatx.m }
+                                    {Chatx.ix? Chatx.ix.toLowerCase().includes(".jpg") ||  Chatx.ix.toLowerCase().includes(".png") ||  Chatx.ix.toLowerCase().includes(".jpeg") ||  Chatx.ix.toLowerCase().includes(".webp")? <img width={200} height={200} src={rtx.cdn+"/"+Chatx.ix} alt="dd" />:<a href={rtx.cdn+"/"+Chatx.ix} className="btn-primary btn text-black">{Chatx.ix}</a>:<div className="text-black">{Chatx.m} </div>}
+
 
                                 </div>
 

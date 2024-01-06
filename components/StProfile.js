@@ -7,45 +7,46 @@ import {FaPencil} from "react-icons/fa6";
 import axios from "axios";
 
 
-export default function (){
+export default function () {
 
 
-    const [dp,setdp]=useState("dp.jpg")
-    const [xx,chx]=useState(true)
+    const [dp, setdp] = useState("dp.jpg")
+    const [xx, chx] = useState(true)
 
-    const usr=UserX();
+    const usr = UserX();
 
 
-    useEffect(()=>{
+    useEffect(() => {
 
         setdp(JSON.parse(window.localStorage.getItem('user')).dp)
 
-    },[])
-    const shox = (ti,v) => {
+    }, [])
+    const shox = (ti, v) => {
 
-        Swal.fire({title:""+ti,
+        Swal.fire({
+            title: "" + ti,
 
 
-            icon:"question",
-            showConfirmButton:true,
-            confirmButtonText:"Change",
-        input:"text",
-            showCancelButton:true,
+            icon: "question",
+            showConfirmButton: true,
+            confirmButtonText: "Change",
+            input: "text",
+            showCancelButton: true,
             showLoaderOnConfirm: true,
-             preConfirm: async (inputValue) => {
+            preConfirm: async (inputValue) => {
 
 
-            let yi={}
-                 yi[v]=inputValue
-               let h=  await  axios.post("/api/users/updatex?id="+usr._id,yi)
+                let yi = {}
+                yi[v] = inputValue
+                let h = await axios.post("/api/users/updatex?id=" + usr._id, yi)
 
-                 localStorage.setItem("user",JSON.stringify(h.data))
+                localStorage.setItem("user", JSON.stringify(h.data))
 
-                 window.location.reload()
+                window.location.reload()
 
-             }
+            }
 
-        }).then(ii=>{
+        }).then(ii => {
 
         })
 
@@ -54,7 +55,7 @@ export default function (){
     const changedp = async (ty) => {
 
 
-        let h = await axios.post("/api/users/updatex?id=" + usr._id, {dp:ty})
+        let h = await axios.post("/api/users/updatex?id=" + usr._id, {dp: ty})
 
         localStorage.setItem("user", JSON.stringify(h.data))
         window.location.reload()
@@ -62,84 +63,126 @@ export default function (){
 
     }
 
-    return <div className="container-fluid me-4 ">
+    return <div className="w-100 fw-bold text-white">
 
-        <h3 className="p-3 rounded w-100 mb-4  text-center" style={{backgroundColor:"#013571",color:"white"}}>Profile</h3>
-        <div className="d-flex justify-content-center text-white fw-bold" style={{marginLeft:"20%"}}>
+        <h4 className="fw-bold w-100 py-3 text-center"
+            style={{backgroundColor: "#f7a21a", color: "white"}}>Profile</h4>
+        <div className="row  text-center justify-content-center">
 
-            <div className="text-center w-100" >
-                <div className="w-75 justify-content-center d-flex">
+            <div className="col-12 justify-content-center d-flex ">
 
-                    <div className="">
+                <div className="">
 
-                        <div className="rounded-circle p-1" style={{backgroundColor: xx?"gray":"white"}}>
-                        {xx ? <img src={rtx.cdn+"/"+ dp} width={150} height={150} alt="Image" className="rounded-circle" />:<UploadX cb={changedp}  />}
+                    <div className={xx ? "rounded-circle p-1" : ""} style={{backgroundColor: xx ? "gray" : "white"}}>
+                        {xx ? <img src={rtx.cdn + "/" + dp} width={150} height={150} alt="Image"
+                                   className="rounded-circle"/> : <UploadX cb={changedp}/>}
                     </div>
-                        <div className="rounded-4 text-bg-dark  border-primary border mt-2" onClick={r=>{chx(!xx)}}> <small style={{cursor:"pointer"}} >  {xx? "Change image" :"Cancel"}</small></div></div>
+                    <div className="rounded-4 text-bg-dark  border-primary border mt-2" onClick={r => {
+                        chx(!xx)
+                    }}><small style={{cursor: "pointer"}}>  {xx ? "Change image" : "Cancel"}</small></div>
+                </div>
+            </div>
+
+
+            <div className="col-12 mt-3 col-lg-10 ">
+                <div className="rounded py-2  w-100" style={{backgroundColor: "#f7a21a"}} onClick={(o) => {
+
+                    shox("Name...?", "name")
+                }}>
+                    <div className="w-100">{usr?.name} <FaPencil className="float-end me-3 mt-1"/></div>
+                </div>
 
             </div>
 
 
-                <div className="py-2 px-5 rounded mt-2 w-75 mt-3" style={{backgroundColor:"#013571"}}   onClick={(o)=>{
-
-                    shox("Name...?","name")
-                }}><div className="d-flex justify-content-between align-items-center">{usr?.name} <FaPencil/> </div> </div>
+            <div className="col-12 mt-3 col-lg-5  ">
 
 
-                <div className="w-75 d-flex">
-                <div onClick={i=>{
-                    shox("What is Your Age...?","age")
-                }} className="py-2 px-5 rounded  mt-2 w-50  mt-3 me-1" style={{backgroundColor:"#013571"}}> <div className="d-flex justify-content-between align-items-center">{usr?.age} <FaPencil/> </div></div>
-                <div onClick={i=>{
-                    shox("What is Your Gender...?","sex")
-                }} className="py-2 px-5 rounded  mt-2 w-50 mt-3 ms-1" style={{backgroundColor:"#013571"}}><div className="d-flex justify-content-between align-items-center">{usr?.sex} <FaPencil/> </div></div>
+                <div onClick={i => {
+                    shox("What is Your Age")
+                }} className="rounded py-2  w-100" style={{backgroundColor: "#f7a21a"}}>
+                    <div className="w-100"><div className=""></div>{usr?.age}<FaPencil className="float-end me-3 mt-1"/></div>
                 </div>
 
 
+            </div>
 
-                <div className="w-75 d-flex">
-                <div   onClick={(o)=>{
+            <div className="col-12 mt-3 col-lg-5">
 
-                    shox("Whats Your Phone Number...?","phone")
-                }}
+                <div onClick={i => {
+                    shox("What is Your Gender...?", "sex")
+                }} className="rounded py-2  w-100" style={{backgroundColor: "#f7a21a"}}>
+                    <div className="w-100"><div className=""></div>{usr?.sex}<FaPencil className="float-end me-3 mt-1"/></div>
+                </div>
+
+            </div>
+            
 
 
-                       className="py-2 px-5 rounded  mt-2 w-50 me-1 mt-3" style={{backgroundColor:"#013571"}}><div className="d-flex justify-content-between align-items-center">{usr?.phone} <FaPencil/> </div></div>
+            <div className="col-12 mt-3 col-lg-5">
+
+                <div onClick={(o) => {
+
+                    shox("Whats Your Phone Number...?", "phone")
 
 
+                }} className="rounded py-2  w-100" style={{backgroundColor: "#f7a21a"}}>
+                    <div className="w-100">{usr?.phone}
+                       <FaPencil className="float-end me-3 mt-1 "/>
 
-                    <div
-                        onClick={(o)=>{
+                    </div>
 
-                            shox("Whats Your Email Address...?","email")
-                        }}
+                </div>
+            </div>
 
-                        className="py-2 px-5 rounded  mt-2 w-50 mt-3 ms-1" style={{backgroundColor:"#013571"}}><div className="d-flex justify-content-between align-items-center">{usr?.email} <FaPencil/> </div></div>
+            <div className="col-12 mt-3 col-lg-5">
+
+                <div onClick={(o) => {
+
+                        shox("Whats Your Email Address...?", "email")
+                    }}
+
+                    className="rounded py-2  w-100 d-flex" style={{backgroundColor: "#f7a21a"}}>
+
+                    <div className="text-truncate " style={{width:"90%"}}>
+                       {usr?.email}
+
+                    </div>
+                    <div className="" style={{width:"10%"}}>
+                    <FaPencil className="float-end me-3 mt-1"/>
                 </div>
 
 
-                <div onClick={(o)=>{
+                </div>
 
-                    shox("Whats Your Address...?","addr")
-                }} className="py-2 px-5 rounded  mt-2 w-75 mt-3" style={{backgroundColor:"#013571"}}><div className="d-flex justify-content-between align-items-center">{usr?.addr} <FaPencil/> </div></div>
+            </div>
+
+            <div className="col-12 mt-3 col-lg-10">
+            <div onClick={(o) => {
+
+                shox("Whats Your Address...?", "addr")
+            }} className="rounded py-2  w-100" style={{backgroundColor: "#f7a21a"}}>
+                <div className="w-100"><div className=""></div>
+                    {usr?.addr}
+                   <FaPencil className="float-end me-3 mt-1"/></div>
+            </div>
+
+            </div>
 
 
+        <div className="mt-3 text-center col-6">
+
+            <div className="btn btn-primary w-100" onClick={r => {
+
+
+                shox(" Enter Your New Password", "password")
+
+
+            }}> Change Password
             </div>
 
 
         </div>
-
-        <div className="row justify-content-center mt-4">
-
-            <div className="btn btn-primary col-4 " onClick={r=>{
-
-
-                shox(" Enter Your New Password","password")
-
-
-            }}> Change Password</div>
-
-
         </div>
 
     </div>

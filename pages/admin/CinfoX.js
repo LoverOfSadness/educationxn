@@ -129,24 +129,26 @@ export default ()=>{
         descrtx=""+rtzg
 
     }
-    return  <div className="bg-white">
+    return  <div className="">
 
         <HeadderX/>
 
-        <Modal show={isOpen} onHide={hideModal} fullscreen={true} >
+        <Modal show={isOpen} onHide={hideModal} fullscreen={true}  className="">
             <Modal.Header>
-                <Modal.Title><div className="text-center">{mtitle}</div></Modal.Title>
-                <button onClick={hideModal} className="bg-transparent border-0 h1 m-0">&times;</button>
+                <Modal.Title><div className="text-center text-black">{mtitle}</div></Modal.Title>
+                <button onClick={hideModal} className="bg-transparent border-0 h1 m-0 text-black">&times;</button>
             </Modal.Header>
-            <Modal.Body>      <div dangerouslySetInnerHTML={{ __html: mdata }} />
+            <Modal.Body className="bg-dark">      <div dangerouslySetInnerHTML={{ __html: mdata }} />
             </Modal.Body></Modal>
-        <div className="d-flex">
+        <div className="d-flex ">
             <AdminDash/>
-            <div className="d-flex w-100 justify-content-center  container text-center" style={{backgroundColor:"lightslategrey"}}>
+            <div className="d-flex w-100 justify-content-center  text-center" >
 
                 <div className="w-100">
 
-                    <h3 className="p-3 rounded w-100 mt-3" style={{backgroundColor:"#013571",color:"white"}}> Manage Course Information </h3>
+
+                    <h4 className="fw-bold w-100 py-3 text-center"
+                        style={{backgroundColor: "#f7a21a", color: "white"}}>New Announcement </h4>
 
 
                     <form id="xrt" className="">

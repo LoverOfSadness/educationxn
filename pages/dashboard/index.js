@@ -8,13 +8,13 @@ export default function About() {
 
 
     return (
-<div className="bg-white">    <HeadderX/>
+<div className="overflow-x-hidden">    <HeadderX/>
 
 
     {/*<div className="row me-2"  style={{backgroundColor:"#cbcbcb"}}>*/}
     {/*    <h3 className="p-3 rounded col-12" style={{backgroundColor:"#013571",color:"white"}}>Faculty Member</h3>*/}
 
-        <div className="d-flex"  style={{backgroundColor:"#cbcbcb"}} >
+        <div className="d-flex">
         <STDash/>
 
     <StProfile/>

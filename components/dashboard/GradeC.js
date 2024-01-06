@@ -20,49 +20,5 @@ export default function (){
 
     },[usr])
 
-    return <div className="container-fluid bg-white mt-1">
-
-        <div className="d-flex justify-content-center text-white" style={{marginRight:"5%"}}>
-
-            <div className="text-center w-100">
-
-
-                <table className="table table-bordered text-white" style= {{backgroundColor:"#013571"}}>
-                    <thead >
-                    <tr className="bg-danger">
-                        <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Test Name</th>
-                        <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Total Marks</th>
-                        <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Marks Obtained</th>
-                        <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Grade</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-
-
-                    {getx.map(rt=> {
-                        return <tr>
-                            <td className="text-white" style={{backgroundColor: "#013571"}}>{rt.q}</td>
-                            <td className="text-white" style={{backgroundColor: "#013571"}}>{rt.x[0]}</td>
-                            <td className="text-white" style={{backgroundColor: "#013571"}}>{rt.x[1]}</td>
-                            <td className="text-white" style={{backgroundColor: "#013571"}}>{rt.x[2]}</td>
-                        </tr>
-
-                    })
-                }
-
-                    </tbody>
-                </table>
-
-
-
-
-        </div>
-
-        <div className="row">
-
-
-        </div>
-
-        </div></div>;
+    return ;
 }

@@ -2,16 +2,14 @@ import mongoose from "mongoose";
 const homesliderSchema = new mongoose.Schema(
     {
 
+        name: {
+            type: String,
+        },
+
         about: {
             type: String,
         },
 
-        term: {
-            type: String,
-        },
-         home: {
-            type: String,
-        },
 
 
 

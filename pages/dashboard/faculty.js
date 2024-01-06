@@ -33,26 +33,28 @@ export default function About() {
 
 
     return (
-        <div className="">    <HeadderX/>
+        <div className="">
 
-            <div className="d-flex" >
+<HeadderX/>
+            <div className="d-flex">
                 <STDash/>
+                <div className="d-flex w-100 justify-content-center  text-center text-white overflow-x-hidden" >
+
+                    <div className="w-100">
 
 
+                        <h4 className="fw-bold w-100 py-3 text-center"
+                            style={{backgroundColor: "#f7a21a", color: "white"}}>Faculty Member</h4>
 
-                <div className="container" >
-
-                    <div className="row me-2"  style={{backgroundColor:"#cbcbcb"}}>
-                        <h3 className="p-3 rounded col-12" style={{backgroundColor:"#013571",color:"white"}}>Faculty Member</h3>
-
+                        <div className="row justify-content-center">
                         { getxdat.map(p=>{
 
 
-                            return    <div className="d-flex col-4 justify-content-between align-items-center pt-4 card bg-transparent border-0" style={{ width:"400px"}}>
+                            return    <div className="d-flex col-12 col-lg-4 justify-content-between align-items-center pt-4 card bg-transparent border-0" style={{ width:"400px"}}>
                                 <div className="text-center">
                                     <img className="rounded-circle mb-3" src={rtx.cdn+"/"+p.dp} alt="Person" width="200" height="200"/>
                                     <p className="h4 " style={{color:"#013571"}}>{p.name}</p>
-                                    <p className="text-black">{p.position}</p>
+                                    <p className="text-white">{p.position}</p>
                                 </div>
 
                             </div>
@@ -62,6 +64,7 @@ export default function About() {
 
 
                         }
+                        </div>
 
                     </div>
                 </div>

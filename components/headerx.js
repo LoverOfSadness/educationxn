@@ -1,104 +1,81 @@
-import Image from "next/image";
 
-import React, { useEffect } from 'react';
-import Link from "next/link";
+
+import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
+import React from "react";
 import UserX from "@/lib/utils";
 import {useRouter} from "next/router";
+import {FaBars} from "react-icons/fa";
 
-const HeadderX = () => {
-    const rot=                                        useRouter();
+export  default ()=>{
     const usr=UserX();
- /*   useEffect(() => {
+    const rot= useRouter();
 
-        const { bootstrap } = require("bootstrap");
+    return <>
 
-        const tooltipTriggerList = [].slice.call(
-            document.querySelectorAll('[data-bs-toggle="tooltip"]')
-        );
-        tooltipTriggerList.map(function (tooltipTriggerEl) {
+        <Navbar expand="lg" >
+            <Container>
 
+                <Navbar.Brand href="/"><img src="/rlogo.png" alt="Logo" width={120} height={85} /></Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" className="text-white"><FaBars/></Navbar.Toggle>
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="w-100 d-flex justify-content-between">
 
-            return new bootstrap.Tooltip(tooltipTriggerEl);
-        });
-
-        const popoverTriggerList = [].slice.call(
-            document.querySelectorAll('[data-bs-toggle="popover"]')
-        );
-        popoverTriggerList.map(function (popoverTriggerEl) {
-            return new bootstrap.Popover(popoverTriggerEl);
-        });
-    }, []);*/
+                        <div className=""></div>
+                        <a href="/" className="text-white mt-1 mt-lg-0">Home</a>
 
 
-
-    return (
-
-        <nav className="navbar navbar-expand-lg bg-white ">
-            <div className="container bg-white pt-2">
-                <Link href="/"
-                     className="navbar-brand">
-                        <img src="/img/layer_7.jpg" alt="Logo" width={130*1.4} height={65*1.4} />
-
-                </Link>
-                <ul className="d-flex align-items-center justify-content-between flex-grow-1 list-unstyled" >
-                        <li className="">
-
-                        </li>
-                    <li className="">
-                            <Link href="/" className="headersitem">Home</Link>
-                        </li>
-                        <li className="">
-                            <Link href="/about">About</Link>
-                        </li>
-                        <li className="">
-                            <Link href="/store">Courses</Link>
-                        </li>
-                        <li className="">
-                            <Link href="/storex">Store</Link>
-                        </li>
-                        <li className="">
-                            <Link href="/contact">Contact</Link>
-                        </li>
-                        <li className="">
-                            <Link href="/archives">Archives</Link>
-                        </li>
-                    <li className="">
-
-                    </li>
+                        <a href="/about" className="text-white mt-1 mt-lg-0">About</a>
 
 
-                        {
-                            usr?.raju?
-                                <div className=""><div className="btn btn-outline-dark me-2" onClick={()=>{
+                        <a href="/store" className="text-white mt-1 mt-lg-0">Courses</a>
 
-                                    rot.push("/dashboard")
-                                }}>
-                                    Dashboard
-                                </div>
-                                    <div className="btn btn-dark" onClick={()=>{
 
-                                        localStorage.clear()
-rot.push("/")
+                        <a href="/storex" className="text-white mt-1 mt-lg-0">Store</a>
+
+
+                        <a href="/contact" className="text-white mt-1 mt-lg-0">Contact</a>
+
+
+                        <a href="/archives" className="text-white mt-1 mt-lg-0">Archives</a>
+
+                        <div className="d-flex justify-content-center mt-1 mt-lg-0">
+
+                            {
+                                usr?.raju?
+                                    <div className=""><div className="btn btn-outline-light me-2" onClick={()=>{
+
+                                        rot.push("/dashboard")
                                     }}>
-LogOut
+                                        Dashboard
                                     </div>
-                                </div>
+                                        <div className="btn btn-light" onClick={()=>{
 
-                               :
-                                <Link href={"/account"} className="">
-                                <div className="d-flex btn btn-outline-dark">
-Login & Register
-                            </div>
-                                </Link>
+                                            localStorage.clear()
+                                            rot.push("/")
+                                        }}>
+                                            LogOut
+                                        </div>
+                                    </div>
 
-                        }
+                                    :
+                                    <a href={"/account"} className="">
+                                        <div className="d-flex btn btn-outline-dark">
+                                            Login & Register
+                                        </div>
+                                    </a>
 
-                </ul>
-            </div>
+                            }
+                        </div>
 
-        </nav>
-    );
-};
+                    </Nav>
+
+                </Navbar.Collapse>
 
 
-export default HeadderX;
+
+            </Container>
+        </Navbar>
+    </>
+
+
+}

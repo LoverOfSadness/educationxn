@@ -103,13 +103,17 @@ export default ()=>{
             <AdminDash/>
 
 
-            <div className="container">
+            <div className="w-100">
 
 
-                <h4>Manage Group</h4>
+
+                <h4 className="fw-bold w-100 py-3 text-center"
+                    style={{backgroundColor: "#f7a21a", color: "white"}}>Question Group </h4>
+
+
+
                 <div className=" p-4 rounded border">
-                    <div className="d-flex justify-content-between"
-                    >
+                    <div className="d-flex justify-content-between">
 
                         <select className="form-control w-50 " onChange={eve => {
 

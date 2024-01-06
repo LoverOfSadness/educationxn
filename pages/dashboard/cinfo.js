@@ -12,13 +12,14 @@ import {FaArrowDown, FaArrowRight} from "react-icons/fa6";
 function CollapsibleContent({ title,datax }) {
     const [open, setOpen] = useState(false);
     return (
-        <div className="text-center w-100 px-5">
+        <>
+        <div className="text-center w-100">
             <Button
-                className="py-2 w-100 mt-1 d-flex justify-content-between px-5"
+                className="py-2 w-100 mt-1 d-flex justify-content-between"
                 onClick={() => setOpen(!open)}
                 aria-controls={`collapse-${title}`}
                 aria-expanded={open}
-                style={{backgroundColor:"#013571"}}
+
             >
                 {title}
                 <FaArrowDown/>
@@ -36,6 +37,7 @@ function CollapsibleContent({ title,datax }) {
                 </div>
             </Collapse>
         </div>
+        </>
     );
 }
 
@@ -60,16 +62,21 @@ export default () =>{
     },[])
 
     return (
-        <div className="bg-white"> <HeadderX/>
+        <div className=""> <HeadderX/>
 
-            <div className="d-flex" >
+            <div className="d-flex overflow-x-hidden" >
                 <STDash/>
 
 
                 <div className="w-100">
+                    <h4 className="fw-bold w-100 py-3 text-center"
+                        style={{backgroundColor: "#f7a21a", color: "white"}}>Course Information</h4>
+
+                   <div className="">
                     {xdat.map((title, index) => (
                         <CollapsibleContent key={index} title={title.title} datax={title.data} />
                     ))}
+                   </div>
                 </div>
 
 

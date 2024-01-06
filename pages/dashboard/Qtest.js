@@ -30,18 +30,19 @@ export default ()=>{
 
 
         <HeadderX/>
+
         <div className="d-flex">
-
-
             <STDash/>
-        <div className="container  border m-4">
-        <h1 className="text-center my-3"> Current Available Test </h1>
+            <div className="d-flex w-100 justify-content-center  text-center text-white overflow-x-hidden" >
+
+                <div className="w-100">
+
+                    <h4 className="fw-bold w-100 py-3 text-center"
+                        style={{backgroundColor: "#f7a21a", color: "white"}}>Class Tests </h4>
 
 
-            <div className="">
 
-
-                { getxdat.map(r=>{
+                    { getxdat.map(r=>{
 
                    return  <div className="form-control d-flex align-items-center justify-content-between">
 <div className="">{r}</div>

@@ -4,6 +4,7 @@ import {useEffect, useRef, useState} from "react";
 import dynamic from "next/dynamic";
 import {Modal} from "react-bootstrap";
 import AdminDash from "@/components/AdminDash";
+import {rtx} from "@/lib/Rh";
 
 export default ()=>{
 
@@ -65,17 +66,17 @@ export default ()=>{
 
         <Modal show={isOpen} onHide={i=>{setIsOpen(false)}} fullscreen={true} >
             <Modal.Header>
-                <div className="text-center w-100 h4 ">User Details</div>
-                <button onClick={i=>{setIsOpen(false)}} className="bg-transparent border-0 h1 m-0">&times;</button>
+                <div className="text-center w-100 h4 text-black ">User Details</div>
+                <button onClick={i=>{setIsOpen(false)}} className="text-black bg-transparent border-0 h1 m-0">&times;</button>
             </Modal.Header>
             <Modal.Body>
 
-                <div className="container-fluid bg-white">
+                <div className="container-fluid bg-dark h-100">
 
                     <div className="d-flex justify-content-center text-white" style={{marginLeft:"20%"}}>
 
                         <div className="text-center w-100"><div className="w-75">
-                            <img src="/img/ellipse_3.png" alt="Image" className="img-fluid" /></div>
+                            <img src={rtx.cdn+"/"+txc.current?.dp} alt="Image" className="img-fluid" /></div>
                             <div className="py-2 px-5 rounded mt-2 w-75 mt-3" style={{backgroundColor:"#cbcbcb"}}>{txc.current?.name}</div>
                             <div className="w-75 d-flex">
                                 <div className="py-2 px-5 rounded  mt-2 w-50  mt-3 me-1" style={{backgroundColor:"#cbcbcb"}}>{txc.current?.age}</div>
@@ -110,11 +111,16 @@ export default ()=>{
 <div className="d-flex">
 
     <AdminDash/>
-<div className="container">
+<div className="w-100">
 
 
-    <h4>Manage Students</h4>
-    <div className=" p-4 rounded border">
+
+    <h4 className="fw-bold w-100 py-3 text-center"
+        style={{backgroundColor: "#f7a21a", color: "white"}}>Manage Students </h4>
+
+
+
+    <div className=" p-lg-4 pt-4 rounded border">
     <div className="d-flex justify-content-between"
     >
 
@@ -186,7 +192,7 @@ loaddataU(event.target.value)
 
 
 
-
+<div className="table-responsive">
         <table className="table table-bordered text-white text-center mt-5 ite" style= {{backgroundColor:"#013571"}}>
             <thead >
             <tr className="bg-danger">
@@ -212,12 +218,14 @@ loaddataU(event.target.value)
 
                             <div className="d-flex justify-content-center">
 
-                                <div className="mx-3 text-white btn" onClick={t=>{
+                                <div className="mx-3 text-white btn d-none" onClick={t=>{
 
                                     txc.current=value
                                     setIsOpen(true)
 
                                 }}>View</div>
+
+
                                 <input type={"checkbox"} onChange={event =>
                                 {
 
@@ -246,6 +254,7 @@ loaddataU(event.target.value)
         </table>
 
 
+</div>
 
         <div className="d-flex justify-content-between"
         >

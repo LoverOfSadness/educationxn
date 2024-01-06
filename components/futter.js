@@ -9,10 +9,10 @@ const  Futter=() =>
         <div className="container-fluid bg-black text-white py-5">
 
             <div className="row py-5">
-            <div className="col-4 d-flex justify-content-center align-items-center">
-                <img src="/img/logo.png"/>
+            <div className="col-lg-4 col-12 d-flex justify-content-center align-items-center">
+                <img src="/rlogo.png"/>
             </div>
-            <div className="col-4">
+            <div className="col-lg-4 col-12">
 
                 <h4>Quick Links</h4>
 
@@ -38,7 +38,7 @@ const  Futter=() =>
 
             </div>
 
-            <div className="col-4  text-center"><h3> Follow Us On</h3>
+            <div className="col-lg-4 col-12  text-center"><h3> Follow Us On</h3>
 
                 <div className="display-5">
                     <FaFacebook className=""/>

@@ -98,15 +98,15 @@ export default ()=>{
     }
 
 
-    return  <div className="bg-white">
+    return  <div className="">
 
         <HeadderX/>
 
         <Modal show={isOpen} onHide={hideModal} fullscreen={true} >
             <Modal.Header>
-                <div className="w-100 h3"><div className="text-center">Sending Message To {mdata?.email}</div>
+                <div className="w-100 h3"><div className="text-center text-black">Sending Message To {mdata?.email}</div>
                 </div>
-                <button onClick={hideModal} className="bg-transparent border-0 h1 m-0">&times;</button>
+                <button onClick={hideModal} className="text-black bg-transparent border-0 h1 m-0">&times;</button>
             </Modal.Header>
             <Modal.Body style={{backgroundColor:"lightgray"}}>
 
@@ -159,11 +159,14 @@ export default ()=>{
         </Modal>
         <div className="d-flex">
             <AdminDash/>
-            <div className="d-flex w-100 justify-content-center  container text-center" style={{backgroundColor:"lightslategrey"}}>
+            <div className="d-flex w-100 justify-content-center   text-center" >
 
                 <div className="w-100">
 
-                    <h3 className="p-3 rounded w-100 mt-3" style={{backgroundColor:"#013571",color:"white"}}>  Notification </h3>
+
+                    <h4 className="fw-bold w-100 py-3 text-center"
+                        style={{backgroundColor: "#f7a21a", color: "white"}}>Manage Notification </h4>
+
 
 
                         <form id="xrt" className="">

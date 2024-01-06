@@ -79,15 +79,18 @@ useEffect(()=>{
     }
 
 
-    return   <div style={{backgroundColor:"lightslategrey"}}>    <HeadderX/>
+    return   <div >    <HeadderX/>
 
-        <div className="d-flex">
+        <div className="d-flex text-white ">
             <AdminDash/>
-            <div className="d-flex w-100 justify-content-center container text-center mt-2" style={{backgroundColor:"lightslategrey"}}>
+            <div className="d-flex w-100 justify-content-center  text-center">
 
-                <div className="w-100">
+                <div className="w-100 ">
 
-                    <h3 className="p-3 rounded w-100" style={{backgroundColor:"#013571",color:"white"}}> Manage Course Materials </h3>
+                    <h4 className="fw-bold w-100 py-3 text-center"
+                        style={{backgroundColor: "#f7a21a", color: "white"}}>Manage Course Materials </h4>
+
+
 
                     <Formik initialValues={{
                         title:"",
@@ -146,7 +149,7 @@ useEffect(()=>{
                                 }
                             }>
                                 {progressX >0 ?<div className="rounded bg-warning position-absolute btn h-100" style={{width:`${(progressX*100)}%`}}><p className="text-white"> {progressX==1?"Add New Item":progressX *100+"%"} </p></div>:""}
-                            <button type="submit" className="btn  w-100 bg-transparent" >.</button>
+                            <button type="submit" className="btn  w-100 bg-transparent text-black" >.</button>
                             </div>
                             </div>
                         </form>
