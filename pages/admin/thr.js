@@ -117,6 +117,7 @@ export default ()=>{
 
     <br/>
     <input type="checkbox" name="Manage Meeting" value="/admin/meet" style={{transform:"scale(2)"}} className="mx-3"/>Manage Class
+    <br/><input type="checkbox" name="Manage FAQ" value="/admin/apqfile" style={{transform:"scale(2)"}} className="mx-3"/>Manage FAQ
     <br/>
 
     <input type="checkbox" name="Edit Pages" value="/admin/cms" style={{transform:"scale(2)"}} className="mx-3"/>Edit Pages

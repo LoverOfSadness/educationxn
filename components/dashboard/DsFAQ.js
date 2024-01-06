@@ -1,6 +1,7 @@
 import {Button, Card, Collapse} from "react-bootstrap";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {FaArrowDown} from "react-icons/fa6";
+import axios from "axios";
 
 function CollapsibleContent({ title }) {
 
@@ -18,11 +19,11 @@ function CollapsibleContent({ title }) {
                 <Button
                     className="py-2 w-100 mt-1 d-flex justify-content-around"
                     onClick={() => setOpen(!open)}
-                    aria-controls={`collapse-${title}`}
+
                     aria-expanded={open}
                     style={{backgroundColor:"#013571"}}
                 >
-                    {title}
+                    {title.title}
                     <FaArrowDown/>
 
                 </Button>
@@ -30,7 +31,12 @@ function CollapsibleContent({ title }) {
                 <div id={`collapse-${title}`}>
                     <Card>
                         <Card.Body>
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad blanditiis commodi cupiditate dignissimos expedita in laborum laudantium maiores minus modi molestiae perspiciatis porro quaerat quis, soluta sunt unde veniam voluptate.
+<div className="text-center"
+
+     dangerouslySetInnerHTML={{__html:title.data}}
+>
+
+</div>
                         </Card.Body>
                     </Card>
                 </div>
@@ -41,23 +47,37 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad blanditiis commodi 
 
 export default  function DsFaq () {
     const [open, setOpen] = useState(false);
-    const titles = [
+    const [getx, setx] = useState([]);
 
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, reprehenderit.',
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, reprehenderit.',
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, reprehenderit.',
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, reprehenderit.',
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, reprehenderit.',
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, reprehenderit.',
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, reprehenderit.',
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, reprehenderit.',
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, reprehenderit.',
-        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, reprehenderit.',
+
+    useEffect(()=>{
+        axios.get("/api/admin/faq").then(value => {
+
+
+            setx(value.data);
+
+            console.log(value.data);
+
+        })
+    },[])
+
+
+
+
+        const titles = [
+
+
     ];
 
-    return<div className="w-100">
-        {titles.map((title, index) => (
-            <CollapsibleContent key={index} title={title} />
-        ))}
+    return<div className="w-100 text-dark">
+
+        {getx.map((a,i)=>{
+
+            return <div>
+                <CollapsibleContent title={a}/>
+            </div>
+
+        })}
     </div>
+
 }

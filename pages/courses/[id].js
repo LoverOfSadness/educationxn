@@ -171,7 +171,7 @@ export default function Id(pro) {
 
                 <div className="col-12 col-lg-6 bg-dark pt-5 ">
 
-                    <div className="d-flex justify-content-lg-center" style={{height: "350px"}}>
+                    <div className="d-flex justify-content-center" style={{height: "350px"}}>
 
                         <img src={rtx.cdn + "/" + xdat.thumb} className="img-fluid " style={{objectFit: "scale-down"}}/>
 
@@ -250,8 +250,8 @@ export default function Id(pro) {
                         </div>
 
 
-                        <div className="border rounded-4 p-3 overflow-y-scroll mb-2  h-100"
-                             style={{maxHeight: "350px", overflowWrap: "break-word"}}>
+                        <div className="border rounded-4 p-3 overflow-y-scroll mb-2  "
+                             style={{ overflowWrap: "break-word"}}>
 
 
                             {xrdat.user?xrdat.user.map( (p,op)=>(
