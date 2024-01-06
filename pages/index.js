@@ -18,7 +18,7 @@ import axios from "axios";
 import {rtx} from "@/lib/Rh";
 
 
-
+// ;;;;kk
 export default function Home() {
 
     const [xdat,setxdat] = useState([]);
