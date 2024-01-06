@@ -89,7 +89,7 @@ export default ()=>{
             <Modal.Body style={{backgroundColor:"#F2F2F2"}}>
                 <button onClick={e=>{
                     setIsOpen(false)
-                }} className="bg-transparent border-0 h1 m-0 float-end">&times;</button>
+                }} className="bg-transparent border-0 h1 m-0 float-end text-black">&times;</button>
 
                 <Aquiz sub={tar}/>
 
