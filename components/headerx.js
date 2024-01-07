@@ -60,7 +60,7 @@ export  default ()=>{
 
                                     :
                                     <a href={"/account"} className="">
-                                        <div className="d-flex btn btn-outline-dark">
+                                        <div className="d-flex btn btn-light">
                                             Login & Register
                                         </div>
                                     </a>

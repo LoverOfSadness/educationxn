@@ -246,8 +246,34 @@ export default function Home() {
 
                                     return <Carousel.Item key={index}>
 
-                                    <div className="d-flex align-items-center">
+<div className="row d-lg-none">
+                                        <div className="col-12">
+                                            <img
+                                                src={rtx.cdn+"/"+value.dp} height={400}
+                                                className="d-block mx-auto me-5 mt-5"
+                                                alt="Image 1"
+                                            />
+                                        </div>
+                                        <div className="col-12">
+                                            <h1>{value.title}</h1>
+                                            <hr/>
+                                            <div className="" style={{height:"25px"}}></div>
+
+
+                                            <p>
+
+                                                {value.sub}
+                                            </p>
+                                            <div className="btn btn-primary text-white btn-outline-light fw-bold px-5 rounded-0"
+                                            >Know more
+                                            </div>
+                                        </div>
+</div>
+                                    <div className=" d-none d-lg-flex ">
+
                                         <div className="col-md-5">
+                                            <div className="" style={{height:"25px"}}></div>
+
                                             <h1>{value.title}</h1>
                                             <hr/>
                                             <div className="" style={{height:"25px"}}></div>
@@ -263,7 +289,7 @@ export default function Home() {
                                         </div>
                                         <div className="col-md-7">
                                             <img
-                                                src={rtx.cdn+"/"+value.dp} height={500}
+                                                src={rtx.cdn+"/"+value.dp} height={400}
                                                 className="d-block mx-auto me-5 mt-5"
                                                 alt="Image 1"
                                             />

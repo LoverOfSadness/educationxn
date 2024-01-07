@@ -10,10 +10,10 @@ export default function () {
     return <div>
 
 
-        <div className="bg-white">    <HeadderX/>
+        <div className="">    <HeadderX/>
 
             <div className="d-flex" >
-                <STDash/>
+
                 <DsFaq/>
 
             </div>

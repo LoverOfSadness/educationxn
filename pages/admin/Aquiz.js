@@ -34,7 +34,7 @@ export default (pro)=>{
     return <>
 
 
-<div className="p-4 border mt-5  ">
+<div className="p-4 border mt-5  text-black ">
 
 
 
