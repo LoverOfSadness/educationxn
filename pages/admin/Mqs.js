@@ -132,7 +132,7 @@ export default ()=>{
                             }
 
                         </select><div className="d-flex">
-                        <div className="btn btn-success me-3" onClick={()=>{
+                        <div className="btn  me-3" style={{backgroundColor:"pink"}} onClick={()=>{
 setIsOpen(true)
 
                         }}>Add Question</div>
@@ -167,7 +167,7 @@ setIsOpen(true)
                             }).then(r =>{})
 
                         }}>Delete</div>
-                        <div className="btn btn-primary" onClick={(o)=>{
+                        <div className="btn btn-warning" onClick={(o)=>{
                             Swal.fire({
                                 title: 'Group Name',
                                 input: 'text',
@@ -218,7 +218,7 @@ setIsOpen(true)
                     <table className="table table-bordered text-white text-center mt-5 ite" style= {{backgroundColor:"#013571"}}>
                         <thead >
                         <tr className="bg-danger">
-                            <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Questions</th>
+                            <th className="text-white" style= {{backgroundColor:"#2C2E43"}}>Questions</th>
 
                         </tr>
                         </thead>
@@ -301,7 +301,7 @@ setIsOpen(true)
                             }
 
                         </select>
-                        <div className="btn btn-primary" onClick={(o)=>{
+                        <div className="btn btn-info" onClick={(o)=>{
 
 
 

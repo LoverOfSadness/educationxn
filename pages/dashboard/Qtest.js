@@ -41,14 +41,15 @@ export default ()=>{
                         style={{backgroundColor: "#f7a21a", color: "white"}}>Class Tests </h4>
 
 
-
+<div className="p-5">
                     { getxdat.map(r=>{
 
-                   return  <div className="form-control d-flex align-items-center justify-content-between">
+                   return  <div className="form-control mt-1  d-flex align-items-center justify-content-between">
 <div className="">{r}</div>
 
 
-                       <div className="btn btn-primary" onClick={sd=>{
+                       <div className="btn-primary btn
+                        " onClick={sd=>{
                            window.location="/dashboard/quiz/"+r
                        }}>
 
@@ -65,7 +66,7 @@ export default ()=>{
 
 
         </div>
-
+            </div>
 
         </div>
         <Futter/>

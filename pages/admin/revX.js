@@ -71,11 +71,16 @@ export default ()=>{
 
 
 
-            <Modal show={isOpen} onHide={(i)=>{setIsOpen(false)}} fullscreen={false}  centered={true} onEscapeKeyDown={ip=>{ip.preventDefault()}}>
+            <Modal show={isOpen} onHide={(i)=>{setIsOpen(false)}}
+                   fullscreen={false}  centered={true}
+                   onEscapeKeyDown={ip=>{ip.preventDefault()}}>
                 <Modal.Header style={{backgroundColor:"#0f0e4a",color:"white"}}>
-                    <div className="w-100 h3"><div className="text-center">Review Contents</div>
+                    <div className="w-100 h3">
+                        <div className="text-center">Review Contents</div>
                     </div>
-                    <button onClick={(i)=>{setIsOpen(false)}} className="bg-transparent border-0 h1 m-0">&times;</button>
+                    <button
+                        onClick={(i)=>{setIsOpen(false)}}
+                        className="bg-transparent border-0 h1 m-0">&times;</button>
                 </Modal.Header>
                 <Modal.Body style={{backgroundColor:"#0f0e4a",color:"white"}}>
 
@@ -108,11 +113,11 @@ export default ()=>{
                     <table className="table table-bordered table-light text-white">
                         <thead>
                         <tr className="text-white">
-                            <th scope="col"  className="text-white"  style= {{backgroundColor:"#e4b845"}}>Name</th>
-                            <th scope="col"  className="text-white"  style= {{backgroundColor:"#e4b845"}}>Star</th>
-                            <th scope="col" className="text-white"  style= {{backgroundColor:"#e4b845"}}>Course</th>
-                            <th scope="col"  className="text-white" style= {{backgroundColor:"#e4b845"}}>Email</th>
-                            <th scope="col"  className="text-white" style= {{backgroundColor:"#e4b845"}}>Action</th>
+                            <th scope="col"  className="text-white"  style= {{backgroundColor:"#2C2E43"}}>Name</th>
+                            <th scope="col"  className="text-white"  style= {{backgroundColor:"#2C2E43"}}>Star</th>
+                            <th scope="col" className="text-white"  style= {{backgroundColor:"#2C2E43"}}>Course</th>
+                            <th scope="col"  className="text-white" style= {{backgroundColor:"#2C2E43"}}>Email</th>
+                            <th scope="col"  className="text-white" style= {{backgroundColor:"#2C2E43"}}>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -123,8 +128,8 @@ export default ()=>{
 
 
                             return <tr key={ind}>
-                                <td style={{backgroundColor: "#0f0e4a"}} className="text-white pt-4">{et.name}</td>
-                                <td style={{backgroundColor: "#0f0e4a"}} className="text-white pt-4">
+                                <td style={{backgroundColor: "#595260"}} className="text-white pt-4">{et.name}</td>
+                                <td style={{backgroundColor: "#595260"}} className="text-white pt-4">
 
 
                                     {Array.from({length: 5}).map((_, index) => {
@@ -154,10 +159,10 @@ export default ()=>{
                                     }
 
                                 </td>
-                                <td style={{backgroundColor: "#0f0e4a"}} className="text-white pt-4" >{et.course}</td>
-                                <td style={{backgroundColor: "#0f0e4a"}} className="text-white pt-4">{et.email}</td>
-                                <td style={{backgroundColor: "#0f0e4a"}} className="text-white d-flex justify-content-around" >
-                                    <div className="btn btn-outline-light  mt-2" style={{backgroundColor:"#df0d06"}} onClick={r=>{
+                                <td style={{backgroundColor: "#595260"}} className="text-white pt-4" >{et.course}</td>
+                                <td style={{backgroundColor: "#595260"}} className="text-white pt-4">{et.email}</td>
+                                <td style={{backgroundColor: "#595260"}} className="text-white d-flex justify-content-around" >
+                                    <div className="btn btn-outline-light  mt-2" style={{backgroundColor:"#FE0000"}} onClick={r=>{
 
                                         axios.delete("/api/admin/revx?id="+et._id).then(o=>{
 
@@ -166,7 +171,7 @@ export default ()=>{
                                     }}>
 
                                         <FaTrash/> delete
-                                    </div><div className="btn  btn-outline-light  mt-2" style={{backgroundColor:"#06bddf"}} onClick={r=>{
+                                    </div><div className="btn  btn-outline-light  mt-2" style={{backgroundColor:"blue"}} onClick={r=>{
 
 
                                         xxxtt(et.rev)

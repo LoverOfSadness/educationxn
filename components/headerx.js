@@ -34,7 +34,7 @@ export  default ()=>{
                         <a href="/storex" className="text-white mt-1 mt-lg-0">Store</a>
 
 
-                        <a href="/contact" className="text-white mt-1 mt-lg-0">Contact</a>
+                        <a href="/contact" className="text-white mt-1 mt-lg-0">Contact Us</a>
 
 
                         <a href="/archives" className="text-white mt-1 mt-lg-0">Archives</a>
@@ -60,7 +60,7 @@ export  default ()=>{
 
                                     :
                                     <a href={"/account"} className="">
-                                        <div className="d-flex btn btn-light">
+                                        <div className="d-flex btn  btn-outline-light">
                                             Login & Register
                                         </div>
                                     </a>

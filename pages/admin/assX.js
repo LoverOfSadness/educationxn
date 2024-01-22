@@ -181,10 +181,11 @@ export default ()=>{
 
 
 
-
+<div className="p-3">
                     <ul className="list-group mb-5 mt-2 ">
                         {xdat.map((item) => (
-                            <li key={item._id} className="list-group-item d-flex justify-content-between">
+
+                            <li key={item._id} className="list-group-item d-flex mt-2  justify-content-between">
 
 
 
@@ -205,7 +206,7 @@ export default ()=>{
 
                                         {item.course }
 
-                                <button className="btn btn-primary btn-sm mx-3" onClick={()=>{
+                                <button className="btn btn-info btn-sm mx-3" onClick={()=>{
 
                                     setmdata(item.data)
                                     setmtitle(item.title)
@@ -271,7 +272,7 @@ export default ()=>{
 
         </div>
 
-
+        </div>
 
         <Futter/>
 

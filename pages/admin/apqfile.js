@@ -144,7 +144,7 @@ export default ()=>{
                 <div className="w-100">
 
 
-                    <h4 className="fw-bold w-100 py-3 text-center"
+                    <h4 className="fw-bold w-100 py-3  text-center"
                         style={{backgroundColor: "#f7a21a", color: "white"}}>Manage FAQ </h4>
 
 
@@ -188,7 +188,9 @@ export default ()=>{
                                 }
                             }
                             >
-                                {progressX >0 ?<div className="rounded bg-warning position-absolute btn w-100 h-100"><p className="text-white"> {progressX==1?"Add New Item":progressX *100+"%"} </p></div>:""}
+                                {progressX >0 ?<div className="rounded bg-warning position-absolute
+                                 btn w-100 h-100"><p className="text-white">
+                                    {progressX===1?"Add New Item":progressX *100+"%"} </p></div>:""}
                                 <button type="submit" className="btn  w-100 bg-transparent" >.</button>
                             </div>
                         </div>
@@ -199,16 +201,16 @@ export default ()=>{
 
                     <ul className="list-group mb-5 mt-2 ">
                         {xdat.map((item) => (
-                            <li key={item._id} className="list-group-item">
+                            <li key={item._id} className="list-group-item mx-5 mt-2">
 
 
                                 {item.title}
 
-                                <div className="float-end ">
+                                <div className="float-end">
 
                                     {item.course}
 
-                                    <button className="btn btn-primary btn-sm mx-3" onClick={()=>{
+                                    <button className="btn btn-primary btn-sm mx-3"  onClick={()=>{
 
                                         setmdata(item.data)
                                         setmtitle(item.title)
@@ -234,7 +236,8 @@ export default ()=>{
 
 
                                         }}
-                                        className="btn btn-danger btn-sm float-right"
+                                        className="btn btn-sm float-right border-black text-white" style={{backgroundColor:"#FE0000"}}
+
                                     >
                                         Delete
                                     </button>

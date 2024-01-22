@@ -13,7 +13,7 @@ export default async function handler(req, res) {
 
 
             if (req.query.id){
-                const user = await blogDB.find({_id:req.query.id},);
+                const user = await blogDB.findOne({_id:req.query.id},);
                 res.status(200).json(user);
             }else {
                 const user = await blogDB.find({},{sub:1,dp:1,title:1});

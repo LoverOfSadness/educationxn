@@ -281,17 +281,17 @@ export default ()=>{
 
 
 
-
+<div className="p-3">
                     <ul className="list-group mb-5 mt-2 ">
                         {xdat.map((item) => (
-                            <li key={item._id} className="list-group-item">
+                            <li key={item._id} className="list-group-item mt-2">
 
 
                                 {item.title}
 
                                 <div className="float-end ">
 
-                                <button className="btn btn-primary btn-sm me-3" onClick={()=>{
+                                <button className="btn btn-info btn-sm me-3" onClick={()=>{
 
                                     setmdata(item.data)
                                     setmtitle(item.title)
@@ -376,7 +376,7 @@ export default ()=>{
 
             </div>
 
-
+            </div>
 
         </div>
 

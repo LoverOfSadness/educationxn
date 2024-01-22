@@ -165,7 +165,7 @@ export default (xxx) => {
 
 
                 <h4 className="fw-bold w-100 py-3 text-center"
-                    style={{backgroundColor: "#f7a21a", color: "white"}}>Edit Content </h4>
+                    style={{backgroundColor: "#595260", color: "white"}}>Edit Content </h4>
 
                 <div className="w-100 ">
 

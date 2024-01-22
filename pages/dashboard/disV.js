@@ -172,7 +172,7 @@ return <div key={u}>   <div className={`w-75 d-flex mb-2 ${Chatx.name===usr.name
 
             </div>
 
-            <div style={{height:"80px",backgroundColor:"#013571"}} className="d-flex align-items-center text-center bottom-0" >
+            <div style={{height:"80px",backgroundColor:"#2F01C7"}} className="d-flex align-items-center text-center bottom-0" >
 
                 <div className="h1 px-3 text-white" onClick={e=>{
 

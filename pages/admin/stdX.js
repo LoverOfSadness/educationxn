@@ -209,11 +209,11 @@ loaddataU(event.target.value)
                 getudat.map(value => {
 
                     return <tr className="bg-danger">
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.name}</td>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.email}</td>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.phone}</td>
-                        <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.role}</td>
-                        <td  className="text-white " style= {{backgroundColor:"#013571"}}>
+                        <td className="text-white" style= {{backgroundColor:"#2C2E43"}}>{value.name}</td>
+                        <td className="text-white" style= {{backgroundColor:"#2C2E43"}}>{value.email}</td>
+                        <td className="text-white" style= {{backgroundColor:"#2C2E43"}}>{value.phone}</td>
+                        <td className="text-white" style= {{backgroundColor:"#2C2E43"}}>{value.role}</td>
+                        <td  className="text-white " style= {{backgroundColor:"#2C2E43"}}>
 
 
                             <div className="d-flex justify-content-center">
@@ -272,7 +272,7 @@ loaddataU(event.target.value)
                 }
 
             </select>
-            <div className="btn btn-primary" onClick={(o)=>{
+            <div className="btn btn-info" onClick={(o)=>{
 
 
 

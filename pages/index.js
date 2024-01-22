@@ -262,10 +262,14 @@ export default function Home() {
 
                                             <p>
 
-                                                {value.sub}
+
                                             </p>
                                             <div className="btn btn-primary text-white btn-outline-light fw-bold px-5 rounded-0"
-                                            >Know more
+
+                                                 onClick={()=>{
+                                                     window.location.href="/blog?id="+value._id
+                                                 }} style={{cursor:"pointer"}}
+                                            > Know more
                                             </div>
                                         </div>
 </div>
@@ -284,6 +288,11 @@ export default function Home() {
                                                 {value.sub}
                                             </p>
                                             <div className="btn btn-primary text-white btn-outline-light fw-bold px-5 rounded-0"
+
+                                                 onClick={()=>{
+                                                     window.location.href="/blog?id="+value._id
+                                                 }}
+
                                                  >Know more
                                             </div>
                                         </div>

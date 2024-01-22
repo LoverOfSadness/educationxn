@@ -221,10 +221,10 @@ export default ()=>{
 
                 <div className="text-center">
 
-                    <table className="table table-bordered table-striped table-light align-middle">
+                    <table className="table  table-bordered table-striped table-light align-middle">
                         <thead>
                         <tr>
-                            <th scope="col">Name</th>
+                            <th scope="col ">Name</th>
                             <th scope="col">Permission</th>
                             <th scope="col">Email</th>
                             <th scope="col">Action</th>
@@ -291,7 +291,7 @@ export default ()=>{
 
 
                                 }}>
-                                    <div className="btn btn-primary mt-2">
+                                    <div className="btn btn-info mt-2">
 
 <div className="px-2">  <FaPencil /> Edit</div>
 

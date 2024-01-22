@@ -49,10 +49,10 @@ export default function () {
                             <table className="table table-bordered text-white" style= {{backgroundColor:"#013571"}}>
                                 <thead >
                                 <tr className="bg-danger">
-                                    <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Test Name</th>
-                                    <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Total Marks</th>
-                                    <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Marks Obtained</th>
-                                    <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Grade</th>
+                                    <th className="text-white" style= {{backgroundColor:"#847D9A"}}>Test Name</th>
+                                    <th className="text-white" style= {{backgroundColor:"#847D9A"}}>Total Marks</th>
+                                    <th className="text-white" style= {{backgroundColor:"#847D9A"}}>Marks Obtained</th>
+                                    <th className="text-white" style= {{backgroundColor:"#847D9A"}}>Grade</th>
                                 </tr>
                                 </thead>
                                 <tbody>

@@ -285,12 +285,12 @@ export default ()=>{
                         xdat.map(value => {
 
                             return <tr className="bg-danger">
-                                <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.name}</td>
-                                <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.email}</td>
-                                <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.phone}</td>
-                                <td  className="text-white" style= {{backgroundColor:"#013571"}}>
+                                <td className="text-white" style= {{backgroundColor:"#595260"}}>{value.name}</td>
+                                <td className="text-white" style= {{backgroundColor:"#595260"}}>{value.email}</td>
+                                <td className="text-white" style= {{backgroundColor:"#595260"}}>{value.phone}</td>
+                                <td  className="text-white" style= {{backgroundColor:"#595260"}}>
 
-                                        <div className="btn btn-success" onClick={()=>{
+                                        <div className="btn btn-info" onClick={()=>{
 
                                             setmdata(value);
                                             showModal()

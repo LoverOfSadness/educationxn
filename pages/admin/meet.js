@@ -113,7 +113,7 @@ export default () => {
 <div className="h3 text-center ">All Meetings</div>
 
                     <div className="table-responsive">
-                    <table className="table table-bordered text-white text-center " style= {{backgroundColor:"#013571"}}>
+                    <table className="table align-middle table-bordered text-white text-center " style= {{backgroundColor:"#013571"}}>
                         <thead >
                         <tr className="">
                             <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Subject</th>
@@ -130,22 +130,22 @@ export default () => {
                                 return <tr className="">
 
                                     <td className="text-white"
-                                        style={{backgroundColor: "#013571"}}>
+                                        style={{backgroundColor: "#2C2E43"}}>
                                         {value.sub}
 
                                     </td>   <td className="text-white"
-                                        style={{backgroundColor: "#013571"}}>
+                                        style={{backgroundColor: "#2C2E43"}}>
                                     {value.duration}
                                     </td>   <td className="text-white"
-                                        style={{backgroundColor: "#013571"}}>
+                                        style={{backgroundColor: "#2C2E43"}}>
                                     {value.group}
                                     </td>   <td className="text-white"
-                                        style={{backgroundColor: "#013571"}}>
+                                        style={{backgroundColor: "#2C2E43"}}>
                                     { (new Date(value.time) ).toLocaleDateString('en-IN',optionsx) }
                                     </td>    <td className="text-white"
-                                        style={{backgroundColor: "#013571"}}>
+                                        style={{backgroundColor: "#2C2E43"}}>
 
-                                    <div className="btn btn-primary  me-2" onClick={i=>{
+                                    <div className="btn btn-info" onClick={i=>{
 
                                         window.location.href=value.alink
                                     }}>Host</div>
@@ -162,7 +162,7 @@ export default () => {
                                                 })
 
 
-                                            }} className="btn btn-danger" value="delete"/>
+                                            }} className="btn text-white p-2 border-black mt-2 mt-md-0 mt-lg-0 ms-md-2 " style={{backgroundColor:"#FE0000"}} value="delete"/>
 
 
                                     </td>

@@ -67,11 +67,11 @@ export default ()=>{
                     <table className="table table-bordered text-white text-center " style= {{backgroundColor:"#013571"}}>
                         <thead >
                         <tr className="">
-                            <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Subject</th>
-                            <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Duration</th>
+                            <th className="text-white" style= {{backgroundColor:"#796C38"}}>Subject</th>
+                            <th className="text-white" style= {{backgroundColor:"#796C38"}}>Duration</th>
                             {/*<th className="text-white" style= {{backgroundColor:"#e4b845"}}>Group</th>*/}
-                            <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Time</th>
-                            <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Action</th>
+                            <th className="text-white" style= {{backgroundColor:"#796C38"}}>Time</th>
+                            <th className="text-white" style= {{backgroundColor:"#796C38"}}>Action</th>
 
                         </tr>
                         </thead>
@@ -101,7 +101,7 @@ export default ()=>{
                                 >
 
 
-                                    <div className="btn btn-primary  me-2" onClick={i=>{
+                                    <div className="btn btn-warning  me-2" onClick={i=>{
 
                                         window.location.href=value.slink
                                     }}>Attend</div>

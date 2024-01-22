@@ -201,11 +201,11 @@ export default ()=>{
                     <table className="table table-bordered table-light text-white">
                         <thead>
                         <tr className="text-white">
-                            <th scope="col" className="text-white" style= {{backgroundColor:"#e4b845"}}>Images</th>
-                            <th scope="col"  className="text-white"  style= {{backgroundColor:"#e4b845"}}>Name</th>
-                            <th scope="col" className="text-white"  style= {{backgroundColor:"#e4b845"}}>Position</th>
-                            <th scope="col"  className="text-white" style= {{backgroundColor:"#e4b845"}}>Classroom</th>
-                            <th scope="col"  className="text-white" style= {{backgroundColor:"#e4b845"}}>Action</th>
+                            <th scope="col" className="text-white" style= {{backgroundColor:"#595260"}}>Images</th>
+                            <th scope="col"  className="text-white"  style= {{backgroundColor:"#595260"}}>Name</th>
+                            <th scope="col" className="text-white"  style= {{backgroundColor:"#595260"}}>Position</th>
+                            <th scope="col"  className="text-white" style= {{backgroundColor:"#595260"}}>Classroom</th>
+                            <th scope="col"  className="text-white" style= {{backgroundColor:"#595260"}}>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -216,18 +216,18 @@ export default ()=>{
 
 
                             return <tr key={ind}>
-                                <td className="text-white"  style={{backgroundColor: "#013571"}}><img src={rtx.cdn+"/"+ et.dp} width={60} height={60} alt=""/></td>
-                                <td style={{backgroundColor: "#013571"}} className="text-white pt-4">{et.name}</td>
-                                <td style={{backgroundColor: "#013571"}} className="text-white pt-4" >{et.position}</td>
-                                <td style={{backgroundColor: "#013571"}} className="text-white pt-4">{et.grp}</td>
-                                <td style={{backgroundColor: "#013571"}} className="text-white" onClick={r=>{
+                                <td className="text-white"  style={{backgroundColor: "#797770"}}><img src={rtx.cdn+"/"+ et.dp} width={60} height={60} alt=""/></td>
+                                <td style={{backgroundColor: "#797770"}} className="text-white pt-4">{et.name}</td>
+                                <td style={{backgroundColor: "#797770"}} className="text-white pt-4" >{et.position}</td>
+                                <td style={{backgroundColor: "#797770"}} className="text-white pt-4">{et.grp}</td>
+                                <td style={{backgroundColor: "#797770"}} className="text-white" onClick={r=>{
 
                                     axios.delete("/api/admin/fac?id="+et._id).then(o=>{
 
                                         window.location.reload()
                                     })
                                 }}>
-                                    <div className="btn btn-danger mt-2">
+                                    <div className="btn text-white  border-black mt-2" style={{backgroundColor:"#FE0000"}}>
 
                                         <FaTrash/> delete
                                     </div>

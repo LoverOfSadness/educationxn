@@ -6,100 +6,101 @@ import {Modal} from "react-bootstrap";
 import AdminDash from "@/components/AdminDash";
 import {Field, Form, Formik} from "formik";
 
-export default ()=>{
+export default () => {
 
-    const  [getxdat,setxdat]=useState([])
-    const  [rgrp,srgp]=useState([])
-    const  [sq,sqq]=useState("")
+    const [getxdat, setxdat] = useState([])
+    const [rgrp, srgp] = useState([])
+    const [sq, sqq] = useState("")
     // const  [qg,qgx]=useState("")
-    const  [getudat,setudat]=useState([])
+    const [getudat, setudat] = useState([])
     // const  [getclick,setclick]=useState([])
     const [isOpen, setIsOpen] = useState(false);
-    const cdata=useRef("")
-    const txc=useRef([])
-    const txcxxx=useRef([])
+    const cdata = useRef("")
+    const txc = useRef([])
+    const txcxxx = useRef([])
     // const udata=useRef([])
-    const clickx=useRef([])
+    const clickx = useRef([])
+
     function loaddata() {
         axios.get("/api/admin/grp").then(value => {
 
 
-
-            clickx.current=[]
+            clickx.current = []
             setxdat(value.data);
 
 
         })
 
     }
-    function loaddataU(s="Not Assign") {
-        sqq(null)
-if (s!== "Not Assign") {
-    srgp(getxdat.filter(ra => ra.name == s)[0].q)
-}
-        axios.get("/api/admin/grp?g="+s).then(value => {
 
+    function loaddataU(s = "Not Assign") {
+        sqq(null)
+        if (s !== "Not Assign") {
+            srgp(getxdat.filter(ra => ra.name == s)[0].q)
+        }
+        axios.get("/api/admin/grp?g=" + s).then(value => {
 
 
             // udata.current=[]
             setudat(value.data);
 
 
-
-
         })
 
     }
 
-    useEffect(()=>{
+    useEffect(() => {
 
 
         loaddata();
 
         loaddataU()
 
-    },[])
+    }, [])
 
 
     return <>
 
 
-
-        <Modal show={isOpen} onHide={i=>{setIsOpen(false)}} fullscreen={true} >
+        <Modal show={isOpen} onHide={i => {
+            setIsOpen(false)
+        }} fullscreen={true}>
             <Modal.Header>
                 <div className="text-center w-100 h4 ">{sq}</div>
-                <button onClick={i=>{setIsOpen(false)}} className="bg-transparent border-0 h1 m-0">&times;</button>
+                <button onClick={i => {
+                    setIsOpen(false)
+                }} className="bg-transparent border-0 h1 m-0">&times;</button>
             </Modal.Header>
             <Modal.Body>
 
                 <div className="container-fluid bg-white">
 
-                    <div className="d-flex justify-content-center h-100" >
+                    <div className="d-flex justify-content-center h-100">
 
                         <div className="border p-5 overflow-y-scroll w-100 h-75">
 
 
-                        {txc.current.map((tc,ctP)=>{
+                            {txc.current.map((tc, ctP) => {
 
 
-                            return <>
+                                return <>
 
-                                Qustion {ctP+1}
-                                <div className="mb-3 border p-4">
-                                <div className="mb-4" dangerouslySetInnerHTML={{__html: tc.q }}></div>
+                                    Qustion {ctP + 1}
+                                    <div className="mb-3 border p-4">
+                                        <div className="mb-4" dangerouslySetInnerHTML={{__html: tc.q}}></div>
 
-                                <div className="bg-success w-100 p-2">
+                                        <div className="bg-success w-100 p-2">
 
-<div className="" dangerouslySetInnerHTML={{__html:txcxxx.current.a[ctP]}}></div>
+                                            <div className=""
+                                                 dangerouslySetInnerHTML={{__html: txcxxx.current.a[ctP]}}></div>
 
-                                </div>
-                                </div>
+                                        </div>
+                                    </div>
 
 
-                            </>
+                                </>
 
-                        })}
-
+                            })}
 
 
                         </div>
@@ -108,34 +109,32 @@ if (s!== "Not Assign") {
                 </div>
 
 
-
-
             </Modal.Body>
 
             <Modal.Footer>
 
 
-                <Formik initialValues={{}} onSubmit={u=>{
+                <Formik initialValues={{}} onSubmit={u => {
 
                     Swal.fire({
-                        title: "Submting Results..",
-                        didOpen: () => {
+                            title: "Submting Results..",
+                            didOpen: () => {
 
-                            Swal.showLoading();
+                                Swal.showLoading();
 
-                            axios.post("/api/admin/qes?idx=" + txcxxx.current._id,u).then(r => {
+                                axios.post("/api/admin/qes?idx=" + txcxxx.current._id, u).then(r => {
 
 
-                                Swal.fire("Done","Result Submitted","success").then(r =>{
+                                    Swal.fire("Done", "Result Submitted", "success").then(r => {
 
-                                    Swal.close()
-                                    setIsOpen(false);
+                                        Swal.close()
+                                        setIsOpen(false);
+
+                                    })
 
                                 })
-
-                            })
+                            }
                         }
-                    }
                     )
 
 
@@ -146,7 +145,7 @@ if (s!== "Not Assign") {
                         <Field name={"x[1]"} className="col form-control mx-2" placeholder="Obtain Mask"></Field>
                         <Field name={"x[2]"} className="col form-control" placeholder="Obtain Grade"></Field>
 
-                        <input type="submit"  className="btn btn-primary col mx-2" name="" id="" value={"Submit "}/>
+                        <input type="submit" className="btn btn-primary col mx-2" name="" id="" value={"Submit "}/>
                     </Form>
 
 
@@ -156,14 +155,10 @@ if (s!== "Not Assign") {
         </Modal>
 
 
-
-
-
-
         <div className="d-flex">
 
             <AdminDash/>
-            <div className="d-flex w-100 justify-content-center   text-center overflow-x-hidden"  >
+            <div className="d-flex w-100 justify-content-center   text-center overflow-x-hidden">
 
                 <div className="w-100">
 
@@ -171,182 +166,173 @@ if (s!== "Not Assign") {
                         style={{backgroundColor: "#f7a21a", color: "white"}}>Give Grade</h4>
 
 
+                    <div className="p-lg-4  border">
 
-                <div className="p-lg-4  border">
-
-                    <div className="row justify-content-around">
-<div className="col-6">
-                        <select className="form-control " onChange={event => {
-
+                        <div className="row justify-content-around">
+                            <div className="col-6">
+                                <select className="form-control " onChange={event => {
 
 
-                            loaddataU(event.target.value)
+                                    loaddataU(event.target.value)
 
 
-                        }}>
-                            <option>Select Group</option>
-                            {getxdat.map(valu => {
+                                }}>
+                                    <option>Select Group</option>
+                                    {getxdat.map(valu => {
 
-                                return <option key={valu._id} value={valu.name}>{valu.name}</option>
-                            })
+                                        return <option key={valu._id} value={valu.name}>{valu.name}</option>
+                                    })
 
-                            }
+                                    }
 
-                        </select>
-</div><div className="col-6">
+                                </select>
+                            </div>
+                            <div className="col-6">
 
-                        <select className="form-control col-5" onChange={event => {
-
-
-sqq(event.target.value)
+                                <select className="form-control col-5" onChange={event => {
 
 
-                        }}>
-                            <option>Select Question</option>
-                            {rgrp.map(valu => {
-
-                                return <option key={valu} value={valu}>{valu}</option>
-                            })
-
-                            }
-
-                        </select>
-
-                    </div>
-
-                    </div>
+                                    sqq(event.target.value)
 
 
+                                }}>
+                                    <option>Select Question</option>
+                                    {rgrp.map(valu => {
 
+                                        return <option key={valu} value={valu}>{valu}</option>
+                                    })
 
+                                    }
 
+                                </select>
 
+                            </div>
 
+                        </div>
 
-
-                    {
-                        sq===null?<></>: <div className="table-responsive"> <table className="table table-bordered mt-lg-5 mt-3 " style= {{backgroundColor:"#013571"}}>
-                        <thead >
-                        <tr className="bg-danger">
-                            <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Student Name</th>
-                            <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Student Email</th>
-                            <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Phone Number</th>
-                            <th className="text-white" style= {{backgroundColor:"#e4b845"}}>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
 
                         {
-                            getudat.map(value => {
+                            sq === null ? <></> : <div className="table-responsive">
+                                <table className="table table-bordered mt-lg-5 mt-3 "
+                                       style={{backgroundColor: "#A1803E"}}>
+                                    <thead>
+                                    <tr className="bg-danger">
+                                        <th className="text-white" style={{backgroundColor: "#001EFF"}}>Student Name
+                                        </th>
+                                        <th className="text-white" style={{backgroundColor: "#001EFF"}}>Student Email
+                                        </th>
+                                        <th className="text-white" style={{backgroundColor: "#001EFF"}}>Phone Number
+                                        </th>
+                                        <th className="text-white" style={{backgroundColor: "#001EFF"}}>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
 
-                                return <tr className="">
-                                    <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.name}</td>
-                                    <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.email}</td>
-                                    <td className="text-white" style= {{backgroundColor:"#013571"}}>{value.phone}</td>
-                                    <td  className="text-white " style= {{backgroundColor:"#013571"}}>
+                                    {
+                                        getudat.map(value => {
 
-
-                                        <div className="d-flex justify-content-center">
-
-                                            <div className="mx-3 text-white" onClick={t=>{
-
-
-
-                                              Swal.fire({
-                                                  title:"Fetching Answer..",
-                                                  allowOutsideClick: false,
-                                                  showConfirmButton: false,
-                                                  didOpen: () => {
-
-                                                      Swal.showLoading();
-
-                                                      axios.get("/api/admin/qes?id="+value._id+"&g="+sq).then(r =>{
-
-
-
-
-
-                                                          if (
-                                                              r.data.length>0
-
-                                                          ){
-
-                                                              axios.get("/api/admin/qgrp?g="+sq).then(rq => {
-
-                                                                  txc.current = rq.data
-                                                                  txcxxx.current=r.data[0]
-
-                                                                  console.log(r.data,"wertyuio")
-                                                                  Swal.close()
-                                                                  setIsOpen(true);
-                                                              })
-                                                          }else {
-
-                                                              Swal.close()
-                                                              Swal.fire("Not Attened","Not Attented","warning")
-
-                                                          }
+                                            return <tr className="">
+                                                <td className="text-white"
+                                                    style={{backgroundColor: "#000b5b"}}>{value.name}</td>
+                                                <td className="text-white"
+                                                    style={{backgroundColor: "#000b5b"}}>{value.email}</td>
+                                                <td className="text-white"
+                                                    style={{backgroundColor: "#000b5b"}}>{value.phone}</td>
+                                                <td className="text-white " style={{backgroundColor: "#000b5b"}}>
 
 
+                                                    <div className="d-flex justify-content-center">
 
-                                                          }
-
-                                                      )
-
-                                                  },
-                                              })
+                                                        <div className="mx-3 text-white" onClick={t => {
 
 
-                                                // setIsOpen(true)
+                                                            Swal.fire({
+                                                                title: "Fetching Answer..",
+                                                                allowOutsideClick: false,
+                                                                showConfirmButton: false,
+                                                                didOpen: () => {
+
+                                                                    Swal.showLoading();
+
+                                                                    axios.get("/api/admin/qes?id=" + value._id + "&g=" + sq).then(r => {
 
 
+                                                                            if (
+                                                                                r.data.length > 0
 
-                                            }}>View</div>
+                                                                            ) {
 
-<div className="text-white">
+                                                                                axios.get("/api/admin/qgrp?g=" + sq).then(rq => {
 
+                                                                                    txc.current = rq.data
+                                                                                    txcxxx.current = r.data[0]
 
-    {/*{  ( value.q.filter(cp=>cp==sq)).length>0 ?"Attempted":"UnAttempt" }*/}
+                                                                                    console.log(r.data, "wertyuio")
+                                                                                    Swal.close()
+                                                                                    setIsOpen(true);
+                                                                                })
+                                                                            } else {
 
+                                                                                Swal.close()
+                                                                                Swal.fire("Not Attened", "Not Attented", "warning")
 
-
-
-
-
-</div>
-
-
-                                            {/*<input type={"checkbox"} onChange={event =>*/}
-                                            {/*{*/}
-
-                                            {/*    if( udata.current.indexOf(value._id) !==-1)*/}
-                                            {/*    {*/}
-                                            {/*        udata.current= udata.current.filter(item => item !== value._id);*/}
-
-                                            {/*    } else {*/}
-
-                                            {/*        udata.current.push(value._id)*/}
-
-                                            {/*    }*/}
-                                            {/*}} /> */}
+                                                                            }
 
 
-                                        </div>
+                                                                        }
+                                                                    )
+
+                                                                },
+                                                            })
 
 
-
-                                    </td>
-                                </tr>
-
-                            })
-
-                        }
+                                                            // setIsOpen(true)
 
 
-                        </tbody>
-                        </table></div>}
+                                                        }}>View
+                                                        </div>
+
+                                                        <div className="text-white">
 
 
+                                                            {/*{  ( value.q.filter(cp=>cp==sq)).length>0 ?"Attempted":"UnAttempt" }*/}
+
+
+                                                        </div>
+
+
+                                                        {/*<input type={"checkbox"} onChange={event =>*/}
+                                                        {/*{*/}
+
+                                                        {/*    if( udata.current.indexOf(value._id) !==-1)*/}
+                                                        {/*    {*/}
+                                                        {/*        udata.current= udata.current.filter(item => item !== value._id);*/}
+
+                                                        {/*    } else {*/}
+
+                                                        {/*        udata.current.push(value._id)*/}
+
+                                                        {/*    }*/}
+                                                        {/*}} /> */}
+
+
+                                                    </div>
+
+
+                                                </td>
+                                            </tr>
+
+                                        })
+
+                                    }
+
+
+                                    </tbody>
+                                </table>
+                            </div>}
+
+
+                    </div>
 
 
                 </div>
@@ -354,14 +340,7 @@ sqq(event.target.value)
 
             </div>
 
-
-
-
-            </div>
-
         </div>
-
-
 
 
     </>

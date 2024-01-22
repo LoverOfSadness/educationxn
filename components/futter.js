@@ -19,18 +19,43 @@ const  Futter=() =>
                 <div className="row mt-4">
 
                     <div className="col-6 ">
-<h6>Home</h6>
-<h6>About Us</h6>
-<h6>Courses</h6>
-<h6>Contact Us</h6>
+<h6 onClick={()=>{
+    window.location.href="/"
+}} style={{cursor:"pointer"}}>   Home</h6>
+<h6 onClick ={()=>{
+    window.location.href="/about"
+}} style={{cursor:"pointer"}}>
+About Us</h6>
+<h6
+    onClick={()=>{
+        window.location.href="/store"
+    }} style={{cursor:"pointer"}}
+>Courses</h6>
+<h6
+    onClick={()=>{
+        window.location.href="/contact"
+    }} style={{cursor:"pointer"}}
+>Contact Us</h6>
 
                     </div>
 
                     <div className="col-6">
-                        <h6>Terms & Condition</h6>
-                        <h6>Privacy Policy</h6>
-                        <h6>FAQ</h6>
-                        <h6>Blogs</h6>
+                        <h6
+                            onClick={()=>{
+                                window.location.href="/"
+                            }} style={{cursor:"pointer"}}
+                        >Terms & Condition</h6>
+                        <h6
+                            onClick={()=>{
+                                window.location.href="/"
+                            }} style={{cursor:"pointer"}}
+                        >Privacy Policy</h6>
+                        <h6
+                            onClick={()=>{
+                                window.location.href="/Faq"
+                            }} style={{cursor:"pointer"}}
+                        >FAQ</h6>
+
 
 
                     </div>

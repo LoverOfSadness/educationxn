@@ -158,10 +158,10 @@ useEffect(()=>{
 
 
 
-
+<div className="p-3">
                     <ul className="list-group mb-5 mt-2 ">
                         {xdat.map((item) => (
-                            <li key={item._id} className="list-group-item d-flex justify-content-between">
+                            <li key={item._id} className="list-group-item mt-2 d-flex justify-content-between">
                                 {item.title}
 
 
@@ -202,7 +202,7 @@ loaddata()
                 </div>
 
 
-
+</div>
             </div>
 
 
